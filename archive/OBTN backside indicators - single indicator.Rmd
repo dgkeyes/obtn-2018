@@ -1,0 +1,76 @@
+---
+title: "OBTN backside indicators - single indicator"
+output: pdf_document
+fontsize: 11pt
+geometry: margin=1in
+---
+
+```{r packages, include=FALSE}
+library(tidyverse) 
+library(ggplot2)
+library(gridExtra)
+library(googlesheets)
+library(kableExtra)
+library(knitr)
+library(formattable)
+library(scales)
+library(stringr)
+library(lettercase)
+
+source("~/Google Drive/Work/R/TFFF themes.R")
+```
+
+
+
+```{r low birthweight get data, echo=FALSE, include=FALSE}
+
+obtn.data.by.measure.sheet <- gs_title("OBTN data by measure")
+
+
+low.birthweight <- gs_read(obtn.data.by.measure.sheet, ws = "all") %>%
+     filter(county != "oregon") %>%
+     filter(county != "rural") %>%
+     filter(county != "urban") %>%
+     # filter(!is.na(number)) %>%
+     mutate(rank = min_rank((number))) %>%
+     mutate(ordering = order((number))) %>%
+     mutate(county = str_title_case(county)) %>%
+     mutate(county = factor(county)) %>%
+     mutate(county = fct_reorder(county, -number)) %>%
+     select(one_of(c( "rank", "county", "number"))) %>%
+     set_names(c("Rank", "County", "Percent")) %>%
+     mutate(Percent = percent(Percent)) 
+     # mutate(Percent = ifelse(!is.na(Percent), percent(Percent)), "" )
+     
+
+```
+
+```{r low birthweight produce table}
+
+low.birthweight %>%
+     kable(format = "latex") 
+     # kable_styling(bootstrap_options = c("striped", "hover"))
+     # kable_styling(latex_options = "striped")
+```
+```{r include=FALSE}
+low.birthweight <- low.birthweight %>%
+     mutate(tertile = ntile(Percent, 3)) %>%
+     mutate(County = str_to_lower(County))
+
+single.measure.map <- map_data("county") %>%
+     filter(region == "oregon") %>%
+     left_join(low.birthweight, by = c("subregion" = "County"))
+```
+
+```{r echo=FALSE}
+ggplot(data = single.measure.map, aes(x = long, y = lat, 
+                                             group = group,
+                                             fill = factor(tertile))) +
+     geom_polygon(color = "white") +
+     # scale_fill_manual(values = c("#DBB29F", "#C07957", "#A53F0F")) +
+     scale_fill_manual(values = c("#B5CC8E", "#6E8F68", "#265142")) +
+     coord_map() +
+     tfff.map.theme
+```
+
+

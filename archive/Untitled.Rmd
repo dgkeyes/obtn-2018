@@ -1,0 +1,68 @@
+---
+title: "Untitled"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+``` {r include=FALSE, cache=FALSE}
+#### Packages ####
+
+library(tidyverse) 
+library(ggplot2)
+library(readxl)
+library(stringr)
+library(XML)
+library(reshape2)
+library(ggmap)
+library(maps)
+library(scales)
+library(rgdal)
+```
+# Header 1
+### Header 3
+```{r pop pyramid, echo=FALSE}
+load(".rdata")
+
+
+#### Temp ####
+
+ggplot(race.ethnicity, aes(x = reorder(racial.ethnic.group, pct), y = pct)) +
+     # geom_bar(stat = "identity", position = "fill") +
+     geom_bar(stat = "identity", fill = tfff.light.green) +
+     geom_text(data = race.ethnicity.all.but.white,
+               label = paste(race.ethnicity.all.but.white$racial.ethnic.group, percent(race.ethnicity.all.but.white$pct), sep =": "), 
+               hjust = 0,
+               nudge_y = .02,
+               color = tfff.medium.gray,
+               fontface = "bold") +
+     geom_text(data = race.ethnicity.white,
+               label = paste(race.ethnicity.white$racial.ethnic.group, percent(race.ethnicity.white$pct), sep =": "), 
+               hjust = 0,
+               nudge_y = -.13,
+               color = "white",
+               fontface = "bold") +
+     # scale_fill_manual(values = c(tfff.light.green, tfff.dark.green, tfff.yellow, tfff.orange, tfff.blue, tfff.red, tfff.brown, tfff.medium.gray)) +
+     tfff.100.bar.chart.theme +
+     coord_flip()
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

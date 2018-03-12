@@ -1,0 +1,53 @@
+---
+title: "OBTN backside indicators"
+output: html_document
+---
+
+```{r packages, include=FALSE}
+library(tidyverse) 
+library(ggplot2)
+library(gridExtra)
+library(googlesheets)
+library(kableExtra)
+library(knitr)
+library(formattable)
+```
+
+```{r get data, echo=FALSE, include=FALSE}
+backside.indicators.sheet <- gs_title("OBTN backside indicators")
+backside.indicators.data <- gs_read(backside.indicators.sheet, ws = "Numbers") %>%
+     select(-Topic) %>%
+     mutate(Measure = as.character(Measure)) %>%
+     mutate(Douglas = as.character(Douglas)) %>%
+     mutate(Oregon = as.character(Oregon)) %>%
+     mutate(Rural = as.character(Rural))
+
+save.image(file = ".RData")
+     
+
+
+```
+
+# Douglas County
+
+```{r make table, echo=FALSE}
+options(knitr.kable.NA = '')
+backside.indicators.data %>%
+     kable("html") %>%
+     kable_styling(bootstrap_options = c("striped", "hover")) %>%
+     add_header_above() %>%
+     group_rows("Demographics", 1, 4) %>%
+     group_rows("Social", 5, 10) %>%
+     group_rows("Education", 11, 13) %>%
+     group_rows("Employment", 14, 17) %>%
+     group_rows("Health", 18, 22) %>%
+     group_rows("Environment", 23, 27) 
+
+
+
+obtn.data.by.measure %>%
+     kable("html") %>%
+     kable_styling(bootstrap_options = c("striped", "hover")) 
+
+```
+

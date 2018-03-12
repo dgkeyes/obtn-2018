@@ -1,0 +1,1242 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"/>
+  <title>1:1,000,000-Scale Federal Lands of the United States</title>
+  <link rel="schema.dc" href="http://purl.org/metadata/dublin_core"/>
+  <meta name="dc.title" content="1:1,000,000-Scale Federal Lands of the United States "/>
+  <meta name="dc.creator" content="National Atlas of the United States "/>
+  <meta name="dc.subject" content="Boundaries Intelligence/Military Society "/>
+  <meta name="dc.description" content="This map layer consists of federally owned or administered lands of the United States, Puerto Rico, and the U.S. Virgin Islands.  For the most part, only areas of 320 acres or more are included; some smaller areas deemed to be important or significant are also included.  There may be private inholdings within the boundaries of Federal lands in this map layer.  Some established Federal lands which are larger than 320 acres are not included in this map layer, because their boundaries were not available from the owning or administering agency. "/>
+  <meta name="dc.publisher" content="National Geospatial Program, The National Map Small Scale"/>
+  <meta name="dc.date" content="201412"/>
+  <meta name="dc.type" content="data.Vector digital data"/>
+  <meta name="dc.format" content="ESRI Shapefile"/>
+  <meta name="dc.format" content="ESRI File Geodatabase 10.0"/>
+  <meta name="dc.format" content="Web Map Service (WMS)"/>
+  <meta name="dc.identifier" content="http://nationalmap.gov/small_scale/atlasftp.html"/>
+  <meta name="dc.lang" content="en"/>
+  <meta name="dc.coverage.x.min" scheme="DD" content="170"/>
+  <meta name="dc.coverage.x.max" scheme="DD" content="-64"/>
+  <meta name="dc.coverage.y.min" scheme="DD" content="17"/>
+  <meta name="dc.coverage.y.max" scheme="DD" content="72"/>
+  <meta name="dc.coverage.placeName" content="United States"/>
+  <meta name="dc.coverage.placeName" content="US"/>
+  <meta name="dc.rights" content="Access constraints: None; Use constraints: None.  Acknowledgment of The National Atlas of the United States of America would be appreciated in"/>
+  <meta name="generated-from" content="c:/usgs/nonbase_layers/fedlands/fedlanp010g.txt"/>
+</head>
+<body>
+<h1>1:1,000,000-Scale Federal Lands of the United States</h1>
+Metadata also available as<p>
+<h4>Frequently anticipated questions:</h4>
+<ul>
+  <li><a href="#what">What does this data set describe?</a>
+    <ol>
+      <li><a href="#what.1">How should this data set be cited?</a></li>
+      <li><a href="#what.2">What geographic area does the data set cover?</a></li>
+      <li><a href="#what.3">What does it look like?</a></li>
+      <li><a href="#what.4">Does the data set describe conditions during a particular time period?</a></li>
+      <li><a href="#what.5">What is the general form of this data set?</a></li>
+      <li><a href="#what.6">How does the data set represent geographic features?</a></li>
+      <li><a href="#what.7">How does the data set describe geographic features?</a></li>
+    </ol>
+  </li>
+  <li><a href="#who">Who produced the data set?</a>
+    <ol>
+      <li><a href="#who.1">Who are the originators of the data set?</a></li>
+      <li><a href="#who.2">Who also contributed to the data set?</a></li>
+      <li><a href="#who.3">To whom should users address questions about the data?</a></li>
+    </ol>
+  </li>
+  <li><a href="#why">Why was the data set created?</a></li>
+  <li><a href="#how">How was the data set created?</a>
+    <ol>
+      <li><a href="#how.1">From what previous works were the data drawn?</a></li>
+      <li><a href="#how.2">How were the data generated, processed, and modified?</a></li>
+      <li><a href="#how.3">What similar or related data should the user be aware of?</a></li>
+    </ol>
+  </li>
+  <li><a href="#quality">How reliable are the data; what problems remain in the data set?</a>
+    <ol>
+      <li><a href="#quality.1">How well have the observations been checked?</a></li>
+      <li><a href="#quality.2">How accurate are the geographic locations?</a></li>
+      <li><a href="#quality.3">How accurate are the heights or depths?</a></li>
+      <li><a href="#quality.4">Where are the gaps in the data?  What is missing?</a></li>
+      <li><a href="#quality.5">How consistent are the relationships among the data, including topology?</a></li>
+    </ol>
+  </li>
+  <li><a href="#getacopy">How can someone get a copy of the data set?</a>
+    <ol>
+      <li><a href="#getacopy.0">Are there legal restrictions on access or use of the data?</a></li>
+      <li><a href="#getacopy.1">Who distributes the data?</a></li>
+      <li><a href="#getacopy.2">What's the catalog number I need to order this data set?</a></li>
+      <li><a href="#getacopy.3">What legal disclaimers am I supposed to read?</a></li>
+      <li><a href="#getacopy.4">How can I download or order the data?</a></li>
+    </ol>
+  </li>
+  <li><a href="#metaref">Who wrote the metadata?</a></li>
+</ul>
+<hr/>
+<h3><a name="what">What does this data set describe?</a></h3>
+<div style="margin-left: 2em">
+<dl>
+<dt><em>Title:</em>  1:1,000,000-Scale Federal Lands of the United States</dt>
+<dt><em>Abstract:</em>  
+<dd>
+
+This map layer consists of federally owned or administered lands of the United States, Puerto Rico,
+and the U.S. Virgin Islands.  For the most part, only areas of 320 acres or more are included; some
+smaller areas deemed to be important or significant are also included.  There may be private
+inholdings within the boundaries of Federal lands in this map layer.  Some established Federal
+lands which are larger than 320 acres are not included in this map layer, because their boundaries
+were not available from the owning or administering agency.
+
+</dd>
+<dt><em>Supplemental_Information:</em>  
+<dd>
+
+Information about National Atlas Web services can be found on the Web Map and Web Feature Services
+page; see <a href="http://nationalmap.gov/small_scale/infodocs/webservices.html">http://nationalmap.gov/small_scale/infodocs/webservices.html</a>.
+<br/>
+
+</dd>
+</dl>
+</div>
+<ol>
+<li><a name="what.1"><b>How should this data set be cited?</b></a><p>
+<blockquote>
+National Atlas of the United States, 201412, 1:1,000,000-Scale Federal Lands of the United States: National Atlas of the United States, Rolla, MO.<p>
+Online Links:
+<ul>
+<li><a href="http://nationalmap.gov/small_scale/atlasftp.html">http://nationalmap.gov/small_scale/atlasftp.html</a>
+</ul>
+<p>
+</blockquote>
+<p>
+</li>
+<li><a name="what.2"><b>What geographic area does the data set cover?</b></a><p>
+<dl>
+<dt><em>West_Bounding_Coordinate:</em>  170</dt>
+<dt><em>East_Bounding_Coordinate:</em>  -64</dt>
+<dt><em>North_Bounding_Coordinate:</em>  72</dt>
+<dt><em>South_Bounding_Coordinate:</em>  17</dt>
+</dl>
+<p>
+</li>
+<li><a name="what.3"><b>What does it look like?</b></a><p>
+<p>
+</li>
+<li><a name="what.4"><b>Does the data set describe conditions during a particular time period?</b></a><p>
+<dl>
+<dt>Calendar_Date: Dec-2014<dt><em>Currentness_Reference:</em>  Publication date</dt>
+</dl>
+<p>
+</li>
+<li><a name="what.5"><b>What is the general form of this data set?</b></a><p>
+<dl>
+<dt><em>Geospatial_Data_Presentation_Form:</em>  Vector digital data</dt>
+</dl>
+<p>
+</li>
+<li><a name="what.6"><b>How does the data set represent geographic features?</b></a><p>
+<ol type="a">
+<li><a name="what.6.a"><b>How are geographic features stored in the data set?</b></a><p>
+This is a Vector data set.
+It contains the following vector data types (SDTS terminology):
+<ul>
+<li>G-Polygon (6656)
+</ul>
+<p>
+</li>
+<li><a name="what.6.b"><b>What coordinate system is used to represent geographic features?</b></a><p>
+Horizontal positions are specified in geographic coordinates, that is, latitude and longitude.
+Latitudes are given to the nearest 0.000278.
+Longitudes are given to the nearest 0.000278.
+Latitude and longitude values are specified in Decimal degrees.
+<p>
+The horizontal datum used is North American Datum of 1983.<br/>
+The ellipsoid used is GRS1980.<br/>
+The semi-major axis of the ellipsoid used is 6378137.<br/>
+The flattening of the ellipsoid used is 1/298.257222.<br/>
+<p>
+</li>
+</ol>
+<p>
+</li>
+<li><a name="what.7"><b>How does the data set describe geographic features?</b></a><p>
+<dl>
+<dt><b><tt>Federal Land</tt></b><dd>Lands of 320 acres or more owned or administered by the Federal government of the United States.
+Also included are smaller Federal lands determined to be important or significant.
+  (Source: National Atlas of the United States)
+<p>
+<dl>
+<dt><b><tt>Shape</tt></b><dd>The representation of the entity in the data.
+  (Source: National Atlas of the United States)<p></p>
+<p>
+<table border="1" cellpadding="4" cellspacing="0">
+<tr><th>Value</th><th>Definition</th></tr>
+<tr><td valign="top">Polygon</td><td>2-dimensional element
+</td></tr>
+</table>
+<p>
+<dt><b><tt>Area</tt></b><dd>The size of the area in square miles.  This is a calculated field.
+  (Source: National Atlas of the United States)<p></p>
+<p>
+<table border="1" cellpadding="4" cellspacing="0">
+<tr><th colspan="2">Range of values</th></tr>
+<tr><th>Minimum:</th><td>0.037565</td></tr>
+<tr><th>Maximum:</th><td>110442.7816</td></tr>
+</table>
+<p>
+<dt><b><tt>Perimeter</tt></b><dd>The perimeter of the area in miles.  This is a calculated field.
+  (Source: National Atlas of the United States)<p></p>
+<p>
+<table border="1" cellpadding="4" cellspacing="0">
+<tr><th colspan="2">Range of values</th></tr>
+<tr><th>Minimum:</th><td>0.822929</td></tr>
+<tr><th>Maximum:</th><td>44176.61590</td></tr>
+</table>
+<p>
+<dt><b><tt>Fedlanp010</tt></b><dd>Internal feature number.
+  (Source: National Atlas of the United States)<p></p>
+<p>
+<table border="1" cellpadding="4" cellspacing="0">
+<tr><th colspan="2">Range of values</th></tr>
+<tr><th>Minimum:</th><td>1</td></tr>
+<tr><th>Maximum:</th><td>6729</td></tr>
+</table>
+<p>
+<dt><b><tt>Feature1</tt></b><dd>The primary or only type of Federal land.  Where an area represents multiple Federal land types,
+this attribute describes the smaller or 'contained' land.
+  (Source: National Atlas of the United States)<p></p>
+<p>
+<table border="1" cellpadding="4" cellspacing="0">
+<tr><th>Value</th><th>Definition</th></tr>
+<tr><td valign="top">AF Guard</td><td>Land designated for use by the U.S. Air Force National Guard.
+</td></tr>
+<tr><td valign="top">Air Force</td><td>Land designated for use by the U.S. Air Force.
+</td></tr>
+<tr><td valign="top">Army</td><td>Land designated for use by the U.S. Army.
+</td></tr>
+<tr><td valign="top">Army Guard</td><td>Land designated for use by the U.S. Army National Guard.
+</td></tr>
+<tr><td valign="top">Coast Guard</td><td>Land designated for use by the U.S. Coast Guard.
+</td></tr>
+<tr><td valign="top">Coordinated Area</td><td>A unit of the National Wildlife Refuge System which is subject to the National Wildlife
+Refuge Administration Act of 1966, but which is managed by State fish and wildlife
+agencies which have nearly full jurisdiction.
+</td></tr>
+<tr><td valign="top">Indian Reservation</td><td>An area of land reserved for a tribe or tribes under treaty or other agreement with the
+United States, executive order, or federal statute or administrative action as permanent
+tribal homelands, and where the federal government holds title to the land in trust on behalf
+of the tribe.
+</td></tr>
+<tr><td valign="top">Lake</td><td>A water area owned or administered by BOR or TVA.
+</td></tr>
+<tr><td valign="top">Land</td><td>A land area owned or administered by BOR or TVA.
+</td></tr>
+<tr><td valign="top">Marine Corps</td><td>Land designated for use by the U.S. Marine Corps.
+</td></tr>
+<tr><td valign="top">MWAA</td><td>Metropolitan Washington Airports Authority - A National airport in the Washington, DC,
+metropolitan area.
+</td></tr>
+<tr><td valign="top">National Battlefield</td><td>Land reserved for the protection and recognition of a historic battlefield.
+</td></tr>
+<tr><td valign="top">National Cemetery</td><td>A military cemetery containing the graves of U.S. Armed Forces veterans and personnel, their
+spouses and dependents.  These cemeteries may also contain the graves of other
+people, such as national figures or Confederate soldiers.  For those without a military
+connection, the Secretary of Veterans Affairs or the Secretary of Defense determines
+eligibility for burial in a national cemetery.
+</td></tr>
+<tr><td valign="top">National Conservation Area</td><td>Land designated by Congress to conserve, protect, and enhance public land areas for the
+benefit and enjoyment of present and future generations.
+</td></tr>
+<tr><td valign="top">National Fish Hatchery</td><td>An area designated for the conservation, restoration, enhancement, and management of the
+Nation's fishery resources and aquatic ecosystems.
+</td></tr>
+<tr><td valign="top">National Forest</td><td>An area established for the protection of forest resources.
+</td></tr>
+<tr><td valign="top">National Game Preserve</td><td>An area designated by Presidential Proclamation or by Congress for the protection of
+wildlife.
+</td></tr>
+<tr><td valign="top">National Grassland</td><td>An area designated by the Secretary of Agriculture and permanently held by the Department of
+Agriculture under Title III of the Bankhead-Jones Farm Tenant Act.
+</td></tr>
+<tr><td valign="top">National Historic Park</td><td>A national park of historic significance.
+</td></tr>
+<tr><td valign="top">National Historic Reserve</td><td>A NPS unit which provides for preservation of historical cultural development and natural
+landscapes, through a partnership of Federal, State, and local agencies.
+</td></tr>
+<tr><td valign="top">National Historic Site</td><td>An area designated as being of national historic significance due to a single feature.
+</td></tr>
+<tr><td valign="top">National Laboratory</td><td>A federally funded research and development center.
+</td></tr>
+<tr><td valign="top">National Lakeshore</td><td>A designated area along the Great Lakes shoreline, established to preserve and protect
+recreational coastline.
+</td></tr>
+<tr><td valign="top">National Memorial</td><td>An area of land commemorating an historic individual or event.
+</td></tr>
+<tr><td valign="top">National Military Park</td><td>A national park established for the protection and recognition of a military site or action.
+</td></tr>
+<tr><td valign="top">National Monument</td><td>An area administered for the protection of historic landmarks, historic and prehistoric
+structures, or other objects of historic or scientific interest.
+</td></tr>
+<tr><td valign="top">National Natural Landmark</td><td>An area that contains the best remaining example of a specific biological and (or) geological
+feature.
+</td></tr>
+<tr><td valign="top">National Park</td><td>A tract of land, having a wide variety of attributes, protected and preserved for the use and
+enjoyment of the public.
+</td></tr>
+<tr><td valign="top">National Parkway</td><td>A roadway and the connected land or cultural sites paralleling the roadway, intended for
+scenic motoring along a protected corridor.
+</td></tr>
+<tr><td valign="top">National Preserve</td><td>A tract of land set aside for the preservation of scenic or wildlife areas.
+</td></tr>
+<tr><td valign="top">National Recreation Area</td><td>An area centered on a large reservoir, emphasizing water-based recreation, or centered near a
+major population center to preserve historic resources and other natural areas that provide
+outdoor recreation.
+</td></tr>
+<tr><td valign="top">National Reserve</td><td>An area set aside as a wildlife reserve.
+</td></tr>
+<tr><td valign="top">National Scenic Area</td><td>A tract of land set aside for the preservation of scenic or wildlife areas.
+</td></tr>
+<tr><td valign="top">National Seashore</td><td>A designated area along the Atlantic, Pacific, or Gulf coast, established to preserve and
+protect recreational coastline.
+</td></tr>
+<tr><td valign="top">National Wilderness Area</td><td>An area of essentially undisturbed, roadless, public lands of 5000 acres or more, that
+retains a primeval character, without permanent improvements and that generally appears to
+have been affected primarily by the forces of nature.
+</td></tr>
+<tr><td valign="top">National Wildlife Refuge</td><td>A tract of land or water protected for the preservation of wildlife.
+</td></tr>
+<tr><td valign="top">Navy</td><td>Land designated for use by the U.S. Navy.
+</td></tr>
+<tr><td valign="top">Other</td><td>A Federal facility that is not otherwise classified.  Includes experimental ranges, federal
+office complexes, etc.
+</td></tr>
+<tr><td valign="top">Public Domain Land</td><td>A tract of public land owned by the U.S. Government and administered by the Bureau of Land
+Management, but not designated for a specific use.
+</td></tr>
+<tr><td valign="top">Research Natural Area</td><td>A tract of land or water set aside to protect natural ecosystems or natural features, to
+allow for scientific study, education, and maintenance of biological diversity.
+</td></tr>
+<tr><td valign="top">Test Site</td><td>A federally owned or managed site established for the testing of nuclear devices.
+</td></tr>
+<tr><td valign="top">Waterfowl Production Area</td><td>A wetland or grassland critical to waterfowl and other wildlife, managed as part of the
+National Wildlife Refuges Program.
+</td></tr>
+<tr><td valign="top">Wild and Scenic River</td><td>A wild, scenic, and (or) recreational river, protected to preserve the river in its
+free-flowing condition.
+</td></tr>
+<tr><td valign="top">Wildlife Management Area</td><td>An area established to conserve and enhance wildlife  and wildlife habitat, and to provide
+public recreation opportunities.
+</td></tr>
+</table>
+<p>
+<dt><b><tt>GNIS_Name1</tt></b><dd>The name of the feature as listed in the Geographic Names Information System (GNIS) database.
+  (Source: National Atlas of the United States)<p></p>
+<p>
+<table border="1" cellpadding="4" cellspacing="0">
+<tr><th>Value</th><th>Definition</th></tr>
+<tr><td valign="top">N/A</td><td>There is no name associated with the area in GNIS.
+</td></tr>
+</table>
+<p>
+<table border="1" cellpadding="4" cellspacing="0">
+<tr><th colspan="2">Formal codeset</th></tr>
+<tr><th>Codeset Name:</th><td>Geographic Names Information System</td></tr>
+<tr><th>Codeset Source:</th><td>U.S. Board on Geographic Names</td></tr>
+</table>
+<p>
+<dt><b><tt>GNIS_ID1</tt></b><dd>The GNIS identifier for the feature.
+  (Source: National Atlas of the United States)<p></p>
+<p>
+<table border="1" cellpadding="4" cellspacing="0">
+<tr><th>Value</th><th>Definition</th></tr>
+<tr><td valign="top">N/A</td><td>There is no identifier associated with the area in GNIS.
+</td></tr>
+</table>
+<p>
+<table border="1" cellpadding="4" cellspacing="0">
+<tr><th colspan="2">Formal codeset</th></tr>
+<tr><th>Codeset Name:</th><td>Geographic Names Information System</td></tr>
+<tr><th>Codeset Source:</th><td>U.S. Board on Geographic Names</td></tr>
+</table>
+<p>
+<dt><b><tt>Admin1</tt></b><dd>A code for the primary owning or administering agency.
+  (Source: National Atlas of the United States)<p></p>
+<p>
+<table border="1" cellpadding="4" cellspacing="0">
+<tr><th>Value</th><th>Definition</th></tr>
+<tr><td valign="top">BIA</td><td>Federal land owned or administered by the Bureau of Indian Affairs.
+</td></tr>
+<tr><td valign="top">BLM</td><td>Federal land owned or administered by the Bureau of Land Management.
+</td></tr>
+<tr><td valign="top">BOR</td><td>Federal land owned or administered by the Bureau of Reclamation.
+</td></tr>
+<tr><td valign="top">DOC</td><td>Federal land owned or administered by the Department of Commerce.
+</td></tr>
+<tr><td valign="top">DOD</td><td>Federal land owned or administered by the Department of Defense.
+</td></tr>
+<tr><td valign="top">DOE</td><td>Federal land owned or administered by the Department of Energy.
+</td></tr>
+<tr><td valign="top">DOJ</td><td>Federal land owned or administered by the Department of Justice.
+</td></tr>
+<tr><td valign="top">DOL</td><td>Federal land owned or administered by the Department of Labor.
+</td></tr>
+<tr><td valign="top">DOT</td><td>Federal land owned or administered by the Department of Transportation.
+</td></tr>
+<tr><td valign="top">FS</td><td>Federal land owned or administered by the U.S. Forest Service.
+</td></tr>
+<tr><td valign="top">FWS</td><td>Federal land owned or administered by the Fish and Wildlife Service.
+</td></tr>
+<tr><td valign="top">GSA</td><td>Federal land owned or administered by the General Services Administration.
+</td></tr>
+<tr><td valign="top">HHS</td><td>Federal land owned or administered by the Department of Health and Human Services.
+</td></tr>
+<tr><td valign="top">MWAA</td><td>Federal land owned or administered by the Metropolitan Washington Airports Authority.
+</td></tr>
+<tr><td valign="top">NASA</td><td>Federal land owned or administered by the National Aeronautics and Space Administration.
+</td></tr>
+<tr><td valign="top">NPS</td><td>Federal land owned or administered by the National Park Service.
+</td></tr>
+<tr><td valign="top">TVA</td><td>Federal land owned or administered by the Tennessee Valley Authority.
+</td></tr>
+<tr><td valign="top">USDA</td><td>Federal land owned or administered by the Department of Agriculture.
+</td></tr>
+<tr><td valign="top">VA</td><td>Federal land owned or administered by the U.S. Department of Veterans Affairs.
+</td></tr>
+</table>
+<p>
+<dt><b><tt>Feature2</tt></b><dd>The secondary type of Federal land. Where an area represents multiple Federal land types, this
+attribute, in general, describes land that surrounds or 'contains' the land referenced in
+Feature1.
+  (Source: National Atlas of the United States)<p></p>
+<p>
+<table border="1" cellpadding="4" cellspacing="0">
+<tr><th>Value</th><th>Definition</th></tr>
+<tr><td valign="top">Air Force</td><td>Land designated for use by the U.S. Air Force.
+</td></tr>
+<tr><td valign="top">Army</td><td>Land designated for use by the U.S. Army.
+</td></tr>
+<tr><td valign="top">Indian Reservation</td><td>An area of land reserved for a tribe or tribes under treaty or other agreement with the
+United States, executive order, or federal statute or administrative action as permanent
+tribal homelands, and where the federal government holds title to the land in trust on behalf
+of the tribe.
+</td></tr>
+<tr><td valign="top">Lake</td><td>A water area owned or administered by BOR or TVA.
+</td></tr>
+<tr><td valign="top">Land</td><td>A land area owned or administered by BOR or TVA.
+</td></tr>
+<tr><td valign="top">National Conservation Area</td><td>Land designated by Congress to conserve, protect, and enhance public land areas for the
+benefit and enjoyment of present and future generations.
+</td></tr>
+<tr><td valign="top">National Forest</td><td>An area established for the protection of forest resources.
+</td></tr>
+<tr><td valign="top">National Grassland</td><td>An area designated by the Secretary of Agriculture and permanently held by the Department of
+Agriculture under Title III of the Bankhead-Jones Farm Tenant Act.
+</td></tr>
+<tr><td valign="top">National Lakeshore</td><td>A designated area along the Great Lakes shoreline, established to preserve and protect
+recreational coastline.
+</td></tr>
+<tr><td valign="top">National Monument</td><td>An area administered for the protection of historic landmarks, historic and prehistoric
+structures, or other objects of historic or scientific interest.
+</td></tr>
+<tr><td valign="top">National Natural Landmark</td><td>An area that contains the best remaining example of a specific biological and (or) geological
+feature.
+</td></tr>
+<tr><td valign="top">National Park</td><td>A tract of land, having a wide variety of attributes, protected and preserved for the use and
+enjoyment of the public.
+</td></tr>
+<tr><td valign="top">National Preserve</td><td>A tract of land set aside for the preservation of scenic or wildlife areas.
+</td></tr>
+<tr><td valign="top">National Recreation Area</td><td>An area centered on a large reservoir, emphasizing water-based recreation, or centered near a
+major population center to preserve historic resources and other natural areas that provide
+outdoor recreation.
+</td></tr>
+<tr><td valign="top">National Seashore</td><td>A designated area along the Atlantic, Pacific, or Gulf coast, established to preserve and
+protect recreational coastline.
+</td></tr>
+<tr><td valign="top">National Wilderness Area</td><td>An area of essentially undisturbed, roadless, public lands of 5000 acres or more, that
+retains a primeval character, without permanent improvements and that generally appears to
+have been affected primarily by the forces of nature.
+</td></tr>
+<tr><td valign="top">National Wildlife Refuge</td><td>A tract of land or water protected for the preservation of wildlife.
+</td></tr>
+<tr><td valign="top">Navy</td><td>Land designated for use by the U.S. Navy.
+</td></tr>
+<tr><td valign="top">Other</td><td>A Federal facility that is not otherwise classified.  Includes experimental ranges, federal
+office complexes, etc.
+</td></tr>
+<tr><td valign="top">Public Domain Land</td><td>A tract of public land owned by the U.S. Government and administered by the Bureau of Land
+Management, but not designated for a specific use.
+</td></tr>
+<tr><td valign="top">Waterfowl Production Area</td><td>A wetland or grassland critical to waterfowl and other wildlife, managed as part of the
+National Wildlife Refuges Program.
+</td></tr>
+<tr><td valign="top">Wild and Scenic River</td><td>A wild, scenic, and (or) recreational river, protected to preserve the river in its
+free-flowing condition.
+</td></tr>
+<tr><td valign="top">N/A</td><td>There is no secondary Federal land type.
+</td></tr>
+</table>
+<p>
+<dt><b><tt>GNIS_Name2</tt></b><dd>The name of the secondary feature as listed in the Geographic Names Information System (GNIS)
+database.
+  (Source: National Atlas of the United States)<p></p>
+<p>
+<table border="1" cellpadding="4" cellspacing="0">
+<tr><th>Value</th><th>Definition</th></tr>
+<tr><td valign="top">N/A</td><td>There is no secondary Federal land feature or there is no name associated with the secondary
+feature in GNIS.
+</td></tr>
+</table>
+<p>
+<table border="1" cellpadding="4" cellspacing="0">
+<tr><th colspan="2">Formal codeset</th></tr>
+<tr><th>Codeset Name:</th><td>Geographic Names Information System</td></tr>
+<tr><th>Codeset Source:</th><td>U.S. Board on Geographic Names</td></tr>
+</table>
+<p>
+<dt><b><tt>GNIS_ID2</tt></b><dd>The GNIS identifier for the secondary feature.
+  (Source: National Atlas of the United States)<p></p>
+<p>
+<table border="1" cellpadding="4" cellspacing="0">
+<tr><th>Value</th><th>Definition</th></tr>
+<tr><td valign="top">N/A</td><td>There is no secondary Federal land feature, or there is no identifier associated with the
+secondary feature in GNIS.
+</td></tr>
+</table>
+<p>
+<table border="1" cellpadding="4" cellspacing="0">
+<tr><th colspan="2">Formal codeset</th></tr>
+<tr><th>Codeset Name:</th><td>Geographic Names Information System</td></tr>
+<tr><th>Codeset Source:</th><td>U.S. Board on Geographic Names</td></tr>
+</table>
+<p>
+<dt><b><tt>Admin2</tt></b><dd>A code for the owning or administering agency of the secondary feature.
+  (Source: National Atlas of the United States)<p></p>
+<p>
+<table border="1" cellpadding="4" cellspacing="0">
+<tr><th>Value</th><th>Definition</th></tr>
+<tr><td valign="top">BIA</td><td>Federal land owned or administered by the Bureau of Indian Affairs.
+</td></tr>
+<tr><td valign="top">BLM</td><td>Federal land owned or administered by the Bureau of Land Management.
+</td></tr>
+<tr><td valign="top">BOR</td><td>Federal land owned or administered by the Bureau of Reclamation.
+</td></tr>
+<tr><td valign="top">DOD</td><td>Federal land owned or administered by the Department of Defense.
+</td></tr>
+<tr><td valign="top">FS</td><td>Federal land owned or administered by the U.S. Forest Service.
+</td></tr>
+<tr><td valign="top">FWS</td><td>Federal land owned or administered by the Fish and Wildlife Service.
+</td></tr>
+<tr><td valign="top">NASA</td><td>Federal land owned or administered by the National Aeronautics and Space Administration.
+</td></tr>
+<tr><td valign="top">NPS</td><td>Federal land owned or administered by the National Park Service.
+</td></tr>
+<tr><td valign="top">TVA</td><td>Federal land owned or administered by the Tennessee Valley Authority.
+</td></tr>
+<tr><td valign="top">N/A</td><td>There is no secondary Federal land feature.
+</td></tr>
+</table>
+<p>
+<dt><b><tt>Feature3</tt></b><dd>The tertiary type of Federal land.  Where an area represents multiple Federal land types, this
+attribute, in general, describes land that surrounds or 'contains' the land referenced in
+Feature2.
+  (Source: National Atlas of the United States)<p></p>
+<p>
+<table border="1" cellpadding="4" cellspacing="0">
+<tr><th>Value</th><th>Definition</th></tr>
+<tr><td valign="top">Army</td><td>Land designated for use by the U.S. Army.
+</td></tr>
+<tr><td valign="top">National Conservation Area</td><td>Land designated by Congress to conserve, protect, and enhance public land areas for the
+benefit and enjoyment of present and future generations.
+</td></tr>
+<tr><td valign="top">National Forest</td><td>An area established for the protection of forest resources.
+</td></tr>
+<tr><td valign="top">National Monument</td><td>An area administered for the protection of historic landmarks, historic and prehistoric
+structures, or other objects of historic or scientific interest.
+</td></tr>
+<tr><td valign="top">National Park</td><td>A tract of land, having a wide variety of attributes, protected and preserved for the use and
+enjoyment of the public.
+</td></tr>
+<tr><td valign="top">National Preserve</td><td>A tract of land set aside for the preservation of scenic or wildlife areas.
+</td></tr>
+<tr><td valign="top">National Wilderness Area</td><td>An area of essentially undisturbed, roadless, public lands of 5000 acres or more, that
+retains a primeval character, without permanent improvements and that generally appears to
+have been affected primarily by the forces of nature.
+</td></tr>
+<tr><td valign="top">Public Domain Land</td><td>A tract of public land owned by the U.S. Government and administered by the Bureau of Land
+Management, but not designated for a specific use.
+</td></tr>
+<tr><td valign="top">N/A</td><td>There is no tertiary Federal land type.
+</td></tr>
+</table>
+<p>
+<dt><b><tt>GNIS_Name3</tt></b><dd>The name of the tertiary feature as listed in the Geographic Names Information System (GNIS)
+database.
+  (Source: National Atlas of the United States)<p></p>
+<p>
+<table border="1" cellpadding="4" cellspacing="0">
+<tr><th>Value</th><th>Definition</th></tr>
+<tr><td valign="top">N/A</td><td>There is no tertiary Federal land feature or there is no name associated with the tertiary
+feature in GNIS.
+</td></tr>
+</table>
+<p>
+<table border="1" cellpadding="4" cellspacing="0">
+<tr><th colspan="2">Formal codeset</th></tr>
+<tr><th>Codeset Name:</th><td>Geographic Names Information System</td></tr>
+<tr><th>Codeset Source:</th><td>U.S. Board on Geographic Names</td></tr>
+</table>
+<p>
+<dt><b><tt>GNIS_ID3</tt></b><dd>The GNIS identifier for the tertiary feature.
+  (Source: National Atlas of the United States)<p></p>
+<p>
+<table border="1" cellpadding="4" cellspacing="0">
+<tr><th>Value</th><th>Definition</th></tr>
+<tr><td valign="top">N/A</td><td>There is no tertiary Federal land feature or there is no identifier associated with the
+tertiary feature in GNIS.
+</td></tr>
+</table>
+<p>
+<table border="1" cellpadding="4" cellspacing="0">
+<tr><th colspan="2">Formal codeset</th></tr>
+<tr><th>Codeset Name:</th><td>Geographic Names Information System</td></tr>
+<tr><th>Codeset Source:</th><td>U.S. Board on Geographic Names</td></tr>
+</table>
+<p>
+<dt><b><tt>Admin3</tt></b><dd>A code for the owning or administering agency of the tertiary feature.
+  (Source: National Atlas of the United States)<p></p>
+<p>
+<table border="1" cellpadding="4" cellspacing="0">
+<tr><th>Value</th><th>Definition</th></tr>
+<tr><td valign="top">BLM</td><td>Federal land owned or administered by the Bureau of Land Management.
+</td></tr>
+<tr><td valign="top">DOD</td><td>Federal land owned or administered by the Department of Defense.
+</td></tr>
+<tr><td valign="top">FS</td><td>Federal land owned or administered by the U.S. Forest Service.
+</td></tr>
+<tr><td valign="top">NPS</td><td>Federal land owned or administered by the National Park Service.
+</td></tr>
+<tr><td valign="top">N/A</td><td>There is no tertiary Federal land feature.
+</td></tr>
+</table>
+<p>
+<dt><b><tt>Url</tt></b><dd>The URL, or Uniform Resource Locator, is the address of a page on the World Wide Web.  The
+address, which provides the basis for establishing an electronic link from a client to the
+physical location of the page on an Internet server, consists of a server name, file path, and
+the page's file name. A URL in this map layer is usually the address of a Federal agency website.
+For example, <a href="http://www.nps.gov/findapark/index.htm">http://www.nps.gov/findapark/index.htm</a> is the address of a National Park Service
+page that allows you to locate a park in the National Park system.
+  (Source: National Atlas of the United States)<p></p>
+<p>
+<table border="1" cellpadding="4" cellspacing="0">
+<tr><th>Value</th><th>Definition</th></tr>
+<tr><td valign="top">N/A</td><td>No URL is available for the area.
+</td></tr>
+</table>
+<p>
+<em>
+There is no predefined set of valid Uniform Resource Locators.
+</em>
+<p>
+<dt><b><tt>State</tt></b><dd>The 2-character abbreviation for the State or State equivalent in which the Federal land feature
+is located.  If the Federal land feature is in more than one State, the abbreviations are
+separated by dashes: UT-CO.
+  (Source: National Atlas of the United States)<p></p>
+<p>
+<table border="1" cellpadding="4" cellspacing="0">
+<tr><th colspan="2">Formal codeset</th></tr>
+<tr><th>Codeset Name:</th><td>American National Standards Institute (ANSI) Codes for States, the District of Columbia, Puerto Rico, and the Insular Areas of the United States</td></tr>
+<tr><th>Codeset Source:</th><td>U.S. Census Bureau</td></tr>
+</table>
+<p>
+<dt><b><tt>State_fips</tt></b><dd>The 2-digit FIPS code of the State or State equivalent in which the Federal land is located.  If
+the Federal land feature is in more than one State the codes are separated by dashes: 49-08.
+  (Source: National Atlas of the United States)<p></p>
+<p>
+<table border="1" cellpadding="4" cellspacing="0">
+<tr><th colspan="2">Formal codeset</th></tr>
+<tr><th>Codeset Name:</th><td>ANSI Codes for States, the District of Columbia, Puerto Rico, and the Insular Areas of the United States</td></tr>
+<tr><th>Codeset Source:</th><td>U.S. Census Bureau</td></tr>
+</table>
+<p>
+<dt><b><tt>Orig_Name</tt></b><dd>The name of the feature as supplied by the source agency.
+  (Source: National Atlas of the United States)<p></p>
+<p>
+<table border="1" cellpadding="4" cellspacing="0">
+<tr><th>Value</th><th>Definition</th></tr>
+<tr><td valign="top">N/A</td><td>No feature name is available from the source agency.
+</td></tr>
+</table>
+<p>
+<em>
+There is no predefined set of valid Orig_names.
+</em>
+<p>
+<dt><b><tt>GIS_acres</tt></b><dd>The size of the area in acres.  This is a calculated field.
+  (Source: National Atlas of the United States)<p></p>
+<p>
+<table border="1" cellpadding="4" cellspacing="0">
+<tr><th colspan="2">Range of values</th></tr>
+<tr><th>Minimum:</th><td>24.04161</td></tr>
+<tr><th>Maximum:</th><td>70683380.261834</td></tr>
+</table>
+<p>
+<dt><b><tt>Shape_leng</tt></b><dd>The perimeter of the area in decimal degrees.  The values for this field are generated by ArcGIS.
+  (Source: National Atlas of the United States)<p></p>
+<p>
+<table border="1" cellpadding="4" cellspacing="0">
+<tr><th colspan="2">Range of values</th></tr>
+<tr><th>Minimum:</th><td>0.01607</td></tr>
+<tr><th>Maximum:</th><td>753.123406</td></tr>
+</table>
+<p>
+<dt><b><tt>Shape_area</tt></b><dd>The size of the area in square decimal degrees.  The values for this field are generated by
+ArcGIS.
+  (Source: National Atlas of the United States)<p></p>
+<p>
+<table border="1" cellpadding="4" cellspacing="0">
+<tr><th colspan="2">Range of values</th></tr>
+<tr><th>Minimum:</th><td>0.000013</td></tr>
+<tr><th>Maximum:</th><td>57.671985</td></tr>
+</table>
+<p>
+</dl>
+<p>
+</dl>
+<p>
+</li>
+</ol>
+<p>
+<hr/>
+<h3><a name="who">Who produced the data set?</a></h3>
+<ol>
+<li><a name="who.1"><b>Who are the originators of the data set?</b></a> (may include formal authors, digital compilers, and editors)<p>
+<ul>
+<li>National Atlas of the United States
+</ul>
+<p>
+</li>
+<li><a name="who.2"><b>Who also contributed to the data set?</b></a><p>
+<p>
+</li>
+<li><a name="who.3"><b>To whom should users address questions about the data?</b></a><p>
+<div style="margin-left: 2em">
+National Geospatial Program, The National Map Small Scale<br/>
+U.S. Geological Survey<br/>
+Reston, VA 20192<br/>
+<p>
+1-888-ASK-USGS (1-888-275-8747) (voice)<br/>
+tnm_help@usgs.gov<br/>
+<dl>
+<dt><em>Contact_Instructions:</em>  
+<dd>
+
+For questions about this map layer or metadata, please contact the National Atlas using the
+information above, or through the U.S. Geological Survey contact page at
+<a href="http://www.usgs.gov/ask/">http://www.usgs.gov/ask/</a>.  For distribution questions, please see the Distribution Information
+elsewhere in this metadata.
+<br/>
+
+</dd>
+</dl>
+</div>
+<p>
+</li>
+</ol>
+<hr/>
+<h3><a name="why">Why was the data set created?</a></h3>
+<blockquote>
+These data are intended for geographic display and analysis at the national level, and for large
+regional areas.  The data should be displayed and analyzed at scales appropriate
+for 1:1,000,000-scale data.  No responsibility is assumed by the National Atlas of the United
+States in the use of these data.
+<br/>
+</blockquote>
+<p>
+<hr/>
+<h3><a name="how">How was the data set created?</a></h3>
+<ol>
+<li><a name="how.1"><b>From what previous works were the data drawn?</b></a><p>
+<dl>
+<dt><b>FWS</b> (source 1 of 28)
+<dd>
+<blockquote>
+U.S. Fish and Wildlife Service, 20120515, USFWS Simplified Wildlife Refuge Boundaries: U.S. Fish and Wildlife Service, Arlington, VA.<p>
+</blockquote>
+<dl>
+<dt><em>Type_of_Source_Media:</em>  Online</dt>
+<dt><em>Source_Contribution:</em>  Spatial and attribute information</dt>
+</dl>
+<p>
+<dt><b>FS_Monuments</b> (source 2 of 28)
+<dd>
+<blockquote>
+USDA Forest Service - Automated Lands Program (ALP), 200805, National Forest Monuments: USDA Forest Service Region 6, Portland, OR.<p>
+</blockquote>
+<dl>
+<dt><em>Type_of_Source_Media:</em>  Online</dt>
+<dt><em>Source_Contribution:</em>  Spatial and attribute information</dt>
+</dl>
+<p>
+<dt><b>FS_Grasslands</b> (source 3 of 28)
+<dd>
+<blockquote>
+USDA Forest Service - Automated Lands Program (ALP), 20061003, National Forest Grasslands: USDA Forest Service Region 6, Portland, OR.<p>
+</blockquote>
+<dl>
+<dt><em>Type_of_Source_Media:</em>  Online</dt>
+<dt><em>Source_Contribution:</em>  Spatial and attribute information</dt>
+</dl>
+<p>
+<dt><b>FS_Boundaries</b> (source 4 of 28)
+<dd>
+<blockquote>
+USDA Forest Service - Automated Lands Program (ALP), 20060616, National Forest Administrative Boundaries: USDA Forest Service Region 6, Portland, OR.<p>
+</blockquote>
+<dl>
+<dt><em>Type_of_Source_Media:</em>  Online</dt>
+<dt><em>Source_Contribution:</em>  Spatial and attribute information</dt>
+</dl>
+<p>
+<dt><b>FS_Recreation</b> (source 5 of 28)
+<dd>
+<blockquote>
+USDA Forest Service - Automated Lands Program (ALP), 20090115, National Forest Recreation Areas: USDA Forest Service Region 6, Portland, OR.<p>
+</blockquote>
+<dl>
+<dt><em>Type_of_Source_Media:</em>  Online</dt>
+<dt><em>Source_Contribution:</em>  Spatial and attribute information</dt>
+</dl>
+<p>
+<dt><b>FS_RNA</b> (source 6 of 28)
+<dd>
+<blockquote>
+USDA Forest Service - Automated Lands Program (ALP), 20090115, National Forest Research Natural Area: USDA Forest Service, Salt Lake City, UT.<p>
+</blockquote>
+<dl>
+<dt><em>Type_of_Source_Media:</em>  Online</dt>
+<dt><em>Source_Contribution:</em>  Spatial and attribute information</dt>
+</dl>
+<p>
+<dt><b>FS_Scenic</b> (source 7 of 28)
+<dd>
+<blockquote>
+USDA Forest Service - Automated Lands Program (ALP), 20090115, National Forest Scenic Area: USDA Forest Service, Salt Lake City, UT.<p>
+</blockquote>
+<dl>
+<dt><em>Type_of_Source_Media:</em>  Online</dt>
+<dt><em>Source_Contribution:</em>  Spatial and attribute information</dt>
+</dl>
+<p>
+<dt><b>FS_Wilderness</b> (source 8 of 28)
+<dd>
+<blockquote>
+USGS, Montana NSDI Partnership Office, 2006, National Forest Wilderness: USDA Forest Service, Salt Lake City, UT.<p>
+</blockquote>
+<dl>
+<dt><em>Type_of_Source_Media:</em>  Online</dt>
+<dt><em>Source_Contribution:</em>  Spatial and attribute information</dt>
+</dl>
+<p>
+<dt><b>Bethesda boundary</b> (source 9 of 28)
+<dd>
+<blockquote>
+National Institutes of Health, 2008, NIH Bethesda Campus Boundary: National Institutes of Health, Bethesda, MD.<p>
+</blockquote>
+<dl>
+<dt><em>Type_of_Source_Media:</em>  Online</dt>
+<dt><em>Source_Contribution:</em>  Spatial and attribute information</dt>
+</dl>
+<p>
+<dt><b>Indian Reservations</b> (source 10 of 28)
+<dd>
+<blockquote>
+Bureau of Indian Affairs, National Geospatial Resource Center, 2009, American Indian Reservations/Federally Recognized Tribal Entities: Bureau of Indian Affairs, National Geospatial Resource Center, Albuquerque, NM.<p>
+</blockquote>
+<dl>
+<dt><em>Type_of_Source_Media:</em>  Online</dt>
+<dt><em>Source_Contribution:</em>  Spatial and attribute information</dt>
+</dl>
+<p>
+<dt><b>SMA</b> (source 11 of 28)
+<dd>
+<blockquote>
+Bureau of Land Management, National Operations Center, National Applications Office, National Integrated Lands (NILS) Project, 20090706, Surface Management Agency data: Bureau of Land Management, Denver, CO.<p>
+</blockquote>
+<dl>
+<dt><em>Type_of_Source_Media:</em>  Online</dt>
+<dt><em>Source_Contribution:</em>  Spatial and attribute information</dt>
+</dl>
+<p>
+<dt><b>FLETC</b> (source 12 of 28)
+<dd>
+<blockquote>
+U.S. Department of Homeland Security, Unknown, Property line boundary of the Federal Law Enforcement Training Center in Glynn County, Georgia: U.S. Department of Homeland Security, Glynco, GA.<p>
+</blockquote>
+<dl>
+<dt><em>Type_of_Source_Media:</em>  Electronic mail</dt>
+<dt><em>Source_Contribution:</em>    Spatial and attribute information</dt>
+</dl>
+<p>
+<dt><b>DCA Boundary</b> (source 13 of 28)
+<dd>
+<blockquote>
+Metropolitan Washington Airports Authority, Unknown, DCA Airport Boundary.<p>
+</blockquote>
+<dl>
+<dt><em>Type_of_Source_Media:</em>  Electronic mail</dt>
+<dt><em>Source_Contribution:</em>  Spatial and attribute information</dt>
+</dl>
+<p>
+<dt><b>DFC Boundary</b> (source 14 of 28)
+<dd>
+<blockquote>
+GSA, 2008, Denver Federal Center Property Boundary: Government Services Agency, Denver, CO.<p>
+</blockquote>
+<dl>
+<dt><em>Type_of_Source_Media:</em>  Electronic mail</dt>
+<dt><em>Source_Contribution:</em>  Spatial and attribute information</dt>
+</dl>
+<p>
+<dt><b>DOD</b> (source 15 of 28)
+<dd>
+<blockquote>
+Defense Installation Spatial Data Infrastructure (DISDI) Program, 2011, Geospatial Information for U.S. Military Installations, Ranges, and Training Areas: Epartment of Defense, DISDI Program, Washington, DC.<p>
+Online Links:
+<ul>
+<li><a href="http://www.acq.osd.mil/ie/bei/disdi.shtml">http://www.acq.osd.mil/ie/bei/disdi.shtml</a>
+</ul>
+<p>
+</blockquote>
+<dl>
+<dt><em>Type_of_Source_Media:</em>  Online</dt>
+<dt><em>Source_Contribution:</em>  Spatial and attribute information</dt>
+</dl>
+<p>
+<dt><b>Fermi Boundary</b> (source 16 of 28)
+<dd>
+<blockquote>
+RJN Group, Inc., 2007, Fermi National Accelerator Laboratory (FNAL) Boundary: U.S. Department of Energy, Batavia, IL.<p>
+</blockquote>
+<dl>
+<dt><em>Type_of_Source_Media:</em>  Online</dt>
+<dt><em>Source_Contribution:</em>  Spatial and attribute information</dt>
+</dl>
+<p>
+<dt><b>IAD Boundary</b> (source 17 of 28)
+<dd>
+<blockquote>
+Metropolitan Washington Airports Authority, Unknown, IAD Airport Boundary.<p>
+</blockquote>
+<dl>
+<dt><em>Type_of_Source_Media:</em>  Electronic mail</dt>
+<dt><em>Source_Contribution:</em>  Spatial and attribute information</dt>
+</dl>
+<p>
+<dt><b>NASA Boundaries</b> (source 18 of 28)
+<dd>
+<blockquote>
+National Aeronautics and Space Administration (NASA), 20080207, National Aeronautics and Space Administration Center Boundaries: NASA, Stennis Space Center, MS.<p>
+</blockquote>
+<dl>
+<dt><em>Type_of_Source_Media:</em>  Electronic mail</dt>
+<dt><em>Source_Contribution:</em>  Spatial and attribute information</dt>
+</dl>
+<p>
+<dt><b>NIHAC Boundary</b> (source 19 of 28)
+<dd>
+<blockquote>
+NIHAC, 2008, National Institutes of Health Animal Center Boundary: National Institutes of Health, Dickerson, MD.<p>
+</blockquote>
+<dl>
+<dt><em>Type_of_Source_Media:</em>  Electronic mail</dt>
+<dt><em>Source_Contribution:</em>  Spatial and attribute information</dt>
+</dl>
+<p>
+<dt><b>NPR3</b> (source 20 of 28)
+<dd>
+<blockquote>
+Energy, Department of, 20051004, Naval Petroleum Reserve Number 3 Boundary: Department of Energy, Washington, DC.<p>
+</blockquote>
+<dl>
+<dt><em>Type_of_Source_Media:</em>  Electronic mail</dt>
+<dt><em>Source_Contribution:</em>  Spatial and attribute information</dt>
+</dl>
+<p>
+<dt><b>Pantex</b> (source 21 of 28)
+<dd>
+<blockquote>
+Pantex, 20080401, Pantex Land Owners: Pantex, Amarillo, TX.<p>
+</blockquote>
+<dl>
+<dt><em>Type_of_Source_Media:</em>  Electronic mail</dt>
+<dt><em>Source_Contribution:</em>  Spatial and attribute information</dt>
+</dl>
+<p>
+<dt><b>RTP Boundary</b> (source 22 of 28)
+<dd>
+<blockquote>
+City of Durham, NC, 2008, RTP Boundary: City of Durham, Durham, NC.<p>
+</blockquote>
+<dl>
+<dt><em>Type_of_Source_Media:</em>  Electronic mail</dt>
+<dt><em>Source_Contribution:</em>  Spatial and attribute information</dt>
+</dl>
+<p>
+<dt><b>TVA</b> (source 23 of 28)
+<dd>
+<blockquote>
+Tennessee Valley Authority (TVA), 2000, TVA Retained Lands: TVA, Knoxville, TN.<p>
+</blockquote>
+<dl>
+<dt><em>Type_of_Source_Media:</em>  Online</dt>
+<dt><em>Source_Contribution:</em>  Spatial and attribute information</dt>
+</dl>
+<p>
+<dt><b>USACE</b> (source 24 of 28)
+<dd>
+<blockquote>
+U.S. Army Corps of Engineers (USACE), 2011, USACE Reservoirs: USACE, Washington, DC.<p>
+</blockquote>
+<dl>
+<dt><em>Type_of_Source_Media:</em>  Electronic mail</dt>
+<dt><em>Source_Contribution:</em>  Spatial and attribute information</dt>
+</dl>
+<p>
+<dt><b>VA</b> (source 25 of 28)
+<dd>
+<blockquote>
+U.S. Department of Veterans Affairs	(VA), 2013, VA Cemeteries: VA, Washington, DC.<p>
+</blockquote>
+<dl>
+<dt><em>Type_of_Source_Media:</em>  Online</dt>
+<dt><em>Source_Contribution:</em>  Spatial and attribute information</dt>
+</dl>
+<p>
+<dt><b>Wilderness</b> (source 26 of 28)
+<dd>
+<blockquote>
+Wilderness Institute, College of Forestry and Conservation, University of Montana, 2010, National wilderness Preservation System: University of Montana, College of Forestry and Conservation, Wilderness Institute, Missoula, MT.<p>
+</blockquote>
+<dl>
+<dt><em>Type_of_Source_Media:</em>  Online</dt>
+<dt><em>Source_Contribution:</em>  Spatial and attribute information</dt>
+</dl>
+<p>
+<dt><b>NPS</b> (source 27 of 28)
+<dd>
+<blockquote>
+Service, National Park, 2008, National Park Service Park Boundaries: National Park Service, Missoula, MT.<p>
+</blockquote>
+<dl>
+<dt><em>Type_of_Source_Media:</em>  Online</dt>
+<dt><em>Source_Contribution:</em>  Spatial and attribute information</dt>
+</dl>
+<p>
+<dt><b>NOAA</b> (source 28 of 28)
+<dd>
+<blockquote>
+Department of Commerce, NOAA, 2010, Table Mountain: NOAA, Boulder, CO.<p>
+</blockquote>
+<dl>
+<dt><em>Type_of_Source_Media:</em>  Online</dt>
+<dt><em>Source_Contribution:</em>  Spatial and attribute information</dt>
+</dl>
+<p>
+</dl>
+</li>
+<li><a name="how.2"><b>How were the data generated, processed, and modified?</b></a><p>
+<dl>
+<dt>Date: 2014 (process 1 of 1)
+<dd>
+All the data sources were downloaded and combined into a single geodatabase.  Boundary lines were
+generalized as needed for the data scale; areas not meeting the minimum mapping unit were
+deleted, attribute values were checked and adjusted as necessary, and the map layer was saved in
+shapefile and in file geodatabase formats.
+<p>
+Data sources used in this process:
+<ul>
+<li>Bethesda boundary
+<li>DCA Boundary
+<li>DFC Boundary
+<li>DOD
+<li>Fermi Boundary
+<li>FLETC
+<li>FS_Boundaries
+<li>FS_Grasslands
+<li>FS_Monument
+<li>FS_Recreation
+<li>FS_RNA
+<li>FS_Scenic
+<li>FS_Wilderness
+<li>FWS
+<li>IAD Boundary
+<li>Indian Reservations
+<li>NASA Boundaries
+<li>NIHAC Boundary
+<li>NOAA
+<li>NPR3
+<li>NPS
+<li>Pantex
+<li>RTP Boundary
+<li>SMA
+<li>TVA
+<li>USACE
+<li>VA
+<li>Wilderness
+</ul>
+<p>
+</dl>
+</li>
+<li><a name="how.3"><b>What similar or related data should the user be aware of?</b></a><p>
+</li>
+</ol>
+<p>
+<hr/>
+<h3><a name="quality">How reliable are the data; what problems remain in the data set?</a></h3>
+<ol>
+<li><a name="quality.1"><b>How well have the observations been checked?</b></a><p>
+<p>
+</li>
+<li><a name="quality.2"><b>How accurate are the geographic locations?</b></a><p>
+<p>
+</li>
+<li><a name="quality.3"><b>How accurate are the heights or depths?</b></a><p>
+<p>
+</li>
+<li><a name="quality.4"><b>Where are the gaps in the data?  What is missing?</b></a><p>
+This map layer includes Federal land features for all fifty United States, the District of Columbia,
+Puerto Rico, and the U.S. Virgin Islands.  The minimum map resolution is 320 acres.  Generally,
+features under this size are not shown.  There may be private inholdings within the boundaries of
+Federal lands in this map layer.  Some established Federal lands which are larger than the minimum
+map resolution are not included in this map layer because their boundaries were not available from
+the owning or administering agency.
+<p>
+</li>
+<li><a name="quality.5"><b>How consistent are the relationships among the observations, including topology?</b></a><p>
+The map layer was checked for topological consistency using ArcGIS.  No other checks for logical
+consistency were performed on this map layer.
+</li>
+</ol>
+<p>
+<hr/>
+<h3><a name="getacopy">How can someone get a copy of the data set?</a></h3>
+<blockquote>
+<a name="getacopy.0"><b>Are there legal restrictions on access or use of the data?</b></a><p>
+<blockquote>
+<dl>
+<dt><em>Access_Constraints:</em>  None</dt>
+<dt><em>Use_Constraints:</em>  
+<dd>
+
+None.  Acknowledgment of The National Atlas of the United States of America would be appreciated in
+products derived from these data.
+
+</dd>
+</dl>
+</blockquote>
+</blockquote>
+<p>
+<ol>
+<li><a name="getacopy.1"><b>Who distributes the data set?</b></a> (Distributor 1 of 1)<p>
+<div style="margin-left: 2em">
+Earth Explorer, U.S. Geological Survey<br/>
+U.S. Geological Survey<br/>
+Sioux Falls, SD 57198-0001<br/>
+<p>
+605-594-6116 (voice)<br/>
+custserv@usgs.gov<br/>
+</div>
+</li>
+<li><a name="getacopy.2"><b>What's the catalog number I need to order this data set?</b></a><p>
+</li>
+<li><a name="getacopy.3"><b>What legal disclaimers am I supposed to read?</b></a><p>
+<blockquote>
+Although these data have been processed successfully on a computer system at the U.S. Geological
+Survey, no warranty expressed or implied is made by the U.S. Geological Survey regarding the utility
+of the data on any other system, nor shall the act of distribution constitute any such warranty.
+No responsibility is assumed by the U.S. Geological Survey in the use of these data.
+</blockquote>
+<p>
+</li>
+<li><a name="getacopy.4"><b>How can I download or order the data?</b></a><p>
+<ul>
+<li><b>Availability in digital form:</b><p>
+<table border="0" cellpadding="2">
+<tr><th align="left" valign="top">Data&nbsp;format:</th>
+<td>
+ESRI Shapefile
+
+</td>
+</tr>
+<tr><th align="left" valign="top">Network&nbsp;links:</th>
+<td>
+<a href="http://nationalmap.gov/small_scale/atlasftp.html">http://nationalmap.gov/small_scale/atlasftp.html</a><br/>
+</td>
+</tr>
+</table>
+<p>
+<table border="0" cellpadding="2">
+<tr><th align="left" valign="top">Data&nbsp;format:</th>
+<td>
+ESRI File Geodatabase 10.0
+
+</td>
+</tr>
+<tr><th align="left" valign="top">Network&nbsp;links:</th>
+<td>
+<a href="http://nationalmap.gov/small_scale/atlasftp.html">http://nationalmap.gov/small_scale/atlasftp.html</a><br/>
+</td>
+</tr>
+</table>
+<p>
+<table border="0" cellpadding="2">
+<tr><th align="left" valign="top">Data&nbsp;format:</th>
+<td>
+Web Map Service (WMS)
+
+</td>
+</tr>
+<tr><th align="left" valign="top">Network&nbsp;links:</th>
+<td>
+&lt;<a href="http://webservices.nationalatlas.gov/wms/boundaries?SERVICE=WMS&REQUEST=GetCapabilities">http://webservices.nationalatlas.gov/wms/boundaries?SERVICE=WMS&REQUEST=GetCapabilities</a>&gt;<br/>
+&lt;<a href="http://webservices.nationalatlas.gov/wms/1million?SERVICE=WMS&REQUEST=GetCapabilities">http://webservices.nationalatlas.gov/wms/1million?SERVICE=WMS&REQUEST=GetCapabilities</a>&gt;<br/>
+&lt;<a href="http://webservices.nationalatlas.gov/wms?SERVICE=WMS&REQUEST=GetCapabilities">http://webservices.nationalatlas.gov/wms?SERVICE=WMS&REQUEST=GetCapabilities</a>&gt; <br/>
+</td>
+</tr>
+</table>
+<p>
+<li><b>Cost to order the data:</b> None<p>
+</ul>
+<p>
+</li>
+</ol>
+<p>
+<hr/>
+<h3><a name="metaref">Who wrote the metadata?</a></h3>
+<dl>
+<dt>Dates:
+<dd>Last modified: 10-Dec-2014<br/>
+</dd>
+<dt>Metadata author:
+<dd>
+<div style="margin-left: 2em">
+National Geospatial Program, The National Map Small Scale<br/>
+U.S. Geological Survey<br/>
+Reston, VA 20192<br/>
+<p>
+1-888-ASK-USGS (1-888-275-8747) (voice)<br/>
+tnm_help@usgs.gov<br/>
+</div>
+</dd>
+<dt>Metadata standard: <dd>FGDC Content Standard for Digital Geospatial Metadata (FGDC-STD-001-1998)</dl>
+<p></p>
+<hr/>
+<span class="mp-generated">Generated by <a href="http://geology.usgs.gov/tools/metadata/tools/doc/mp.html"><tt>mp</tt></a> version 2.9.27 on Fri Dec 12 09:47:32 2014<br/></span>
+
+</body>
+</html>

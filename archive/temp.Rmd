@@ -1,0 +1,68 @@
+---
+title: "Test"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+
+```
+
+## R Markdown
+
+```{r}
+load("../.rData")
+
+for (i in 1:2) {
+
+     
+     median.income <- county.data %>%
+          select(geography, median_income) %>%
+          gather(key = "median_income", value = "amount", -geography) %>%
+          arrange(geography) %>%
+          filter(geography == oregon.counties[i] | geography == "oregon") %>%
+          select(-median_income)
+     
+     print(median.income$geography[1])
+     
+     ggplot(median.income, aes(x = geography, y = amount, 
+                               fill = factor(geography))) +
+          geom_bar(stat = "identity",
+                   width = .75) +
+          geom_text(label = dollar(median.income$amount),
+                    size = tfff.base.font.size,
+                    color = "white",
+                    fontface = "bold",
+                    family = "Calibri",
+                    nudge_y = -8000) +
+          geom_text(label = str_to_title(median.income$geography),
+                    hjust = .1,
+                    size = tfff.base.font.size,
+                    color = "white",
+                    fontface = "bold",
+                    family = "Calibri",
+                    aes(x = median.income$geography, y = 4000)) +
+          tfff.bar.chart.theme +
+          scale_fill_manual(values = c(tfff.dark.green, tfff.medium.gray)) +
+          coord_flip() 
+          # coord_fixed(5)
+     
+     # dk_save_plot("median income", 2.43, .08879)
+     # dk_save_plot_by_measure("median income", 2.43, .08879)
+     
+
+     ggsave(file = paste(oregon.counties[i],
+                             ".png",
+                             sep=""),
+            path = paste("../plots/final/temp/median income/",
+                         sep = ""),
+            device = "png",
+            height = .08879,
+            width = 2.43,
+            units = "in",
+            dpi = 300)
+
+}
+```
+
