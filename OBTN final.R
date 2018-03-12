@@ -13,7 +13,6 @@ library(googlesheets)
 library(extrafont)
 
 
-test
 # loadfonts()
 
 
