@@ -1,37 +1,37 @@
-"","county","name","for_geocode","lon","lat","type","label_number"
-"1","linn","Albany","Albany, Oregon",-123.1059282,44.6365107,"largest community",1
-"2","gilliam","Arlington","Arlington, Oregon",-120.2008761,45.716796,"largest community",2
-"3","clatsop","Astoria","Astoria, Oregon",-123.765416,46.2,"largest community",3
-"4","baker","Baker City","Baker City, Oregon",-117.8343848,44.7748748,"largest community",4
-"5","deschutes","Bend","Bend, Oregon",-121.3153096,44.0581728,"largest community",5
-"6","morrow","Boardman","Boardman, Oregon",-119.7005834,45.839855,"largest community",6
-"7","curry","Brookings","Brookings, Oregon",-124.23,42.0526114,"largest community",7
-"8","harney","Burns","Burns, Oregon",-119.0541032,43.5862606,"largest community",8
-"9","coos","Coos Bay","Coos Bay, Oregon",-124.2178903,43.3665007,"largest community",9
-"10","benton","Corvallis","Corvallis, Oregon",-123.2620435,44.5645659,"largest community",10
-"11","wallowa","Enterprise","Enterprise, Oregon",-117.2787816,45.4262617,"largest community",11
-"12","lane","Eugene","Eugene, Oregon",-123.0867536,44.0520691,"largest community",12
-"13","wheeler","Fossil","Fossil, Oregon",-120.2161373,44.9981864,"largest community",13
-"14","josephine","Grants Pass","Grants Pass, Oregon",-123.3283925,42.4390069,"largest community",14
-"15","umatilla","Hermiston","Hermiston, Oregon",-119.2894604,45.8404101,"largest community",15
-"16","hood river","Hood River","Hood River, Oregon",-121.5214623,45.7053966,"largest community",16
-"17","grant","John Day","John Day, Oregon",-118.95301,44.4159883,"largest community",17
-"18","klamath","Klamath Falls","Klamath Falls, Oregon",-121.7816704,42.224867,"largest community",18
-"19","union","La Grande","La Grande, Oregon",-118.0877188,45.3245771,"largest community",19
-"20","lake","Lakeview","Lakeview, Oregon",-120.345792,42.1887721,"largest community",20
-"21","jefferson","Madras","Madras, Oregon",-121.1294872,44.6334544,"largest community",21
-"22","yamhill","McMinnville","McMinnville, Oregon",-123.1987163,45.2101162,"largest community",22
-"23","jackson","Medford","Medford, Oregon",-122.8755949,42.3265152,"largest community",23
-"24","lincoln","Newport","Newport, Oregon",-124.0234505,44.6367836,"largest community",24
-"25","malheur","Ontario","Ontario, Oregon",-116.9629378,44.0265525,"largest community",25
-"26","clackamas","Portland","Portland, Oregon",-122.5889,45.451662,"largest community",26
-"27","multnomah","Portland","Portland, Oregon",-122.6764815,45.5230622,"largest community",27
-"28","washington","Portland","Portland, Oregon",-122.767919,45.471887,"largest community",28
-"29","crook","Prineville","Prineville, Oregon",-120.8344664,44.2998485,"largest community",29
-"30","douglas","Roseburg","Roseburg, Oregon",-123.3417381,43.216505,"largest community",30
-"31","marion","Salem","Salem, Oregon",-123.0350963,44.9428975,"largest community",31
-"32","polk","Salem","Salem, Oregon",-123.0350963,44.9428975,"largest community",32
-"33","columbia","St. Helens","St. Helens, Oregon",-122.8158185,45.8590111,"largest community",33
-"34","wasco","The Dalles","The Dalles, Oregon",-121.1786823,45.5945645,"largest community",34
-"35","tillamook","Tillamook","Tillamook, Oregon",-123.8440137,45.4562158,"largest community",35
-"36","sherman","Wasco","Wasco, Oregon",-120.698113,45.5917918,"largest community",36
+"","geography","largest_community","largest_community_pop","text_to_use","join_text","label_number","county","name","for_geocode","lon","lat","type"
+"1","Clackamas","Portland",620589,"Portland (Clackamas): 620589","Portland, Clackamas",1,"clackamas","Portland","Portland, Oregon",-122.5889,45.451662,"largest community"
+"2","Multnomah","Portland",620589,"Portland (Multnomah): 620589","Portland, Multnomah",2,"multnomah","Portland","Portland, Oregon",-122.6764815,45.5230622,"largest community"
+"3","Washington","Portland",620589,"Portland (Washington): 620589","Portland, Washington",3,"washington","Portland","Portland, Oregon",-122.767919,45.471887,"largest community"
+"4","Marion","Salem",161975,"Salem (Marion): 161975","Salem, Marion",4,"marion","Salem","Salem, Oregon",-123.0350963,44.9428975,"largest community"
+"5","Polk","Salem",161975,"Salem (Polk): 161975","Salem, Polk",5,"polk","Salem","Salem, Oregon",-123.0350963,44.9428975,"largest community"
+"6","Lane","Eugene",161649,"Eugene (Lane): 161649","Eugene, Lane",6,"lane","Eugene","Eugene, Oregon",-123.0867536,44.0520691,"largest community"
+"7","Deschutes","Bend",84416,"Bend (Deschutes): 84416","Bend, Deschutes",7,"deschutes","Bend","Bend, Oregon",-121.3153096,44.0581728,"largest community"
+"8","Jackson","Medford",78856,"Medford (Jackson): 78856","Medford, Jackson",8,"jackson","Medford","Medford, Oregon",-122.8755949,42.3265152,"largest community"
+"9","Benton","Corvallis",55766,"Corvallis (Benton): 55766","Corvallis, Benton",9,"benton","Corvallis","Corvallis, Oregon",-123.2620435,44.5645659,"largest community"
+"10","Linn","Albany",51919,"Albany (Linn): 51919","Albany, Linn",10,"linn","Albany","Albany, Oregon",-123.1059282,44.6365107,"largest community"
+"11","Josephine","Grants Pass",36776,"Grants Pass (Josephine): 36776","Grants Pass, Josephine",11,"josephine","Grants Pass","Grants Pass, Oregon",-123.3283925,42.4390069,"largest community"
+"12","Yamhill","McMinnville",33724,"McMinnville (Yamhill): 33724","McMinnville, Yamhill",12,"yamhill","McMinnville","McMinnville, Oregon",-123.1987163,45.2101162,"largest community"
+"13","Douglas","Roseburg",22201,"Roseburg (Douglas): 22201","Roseburg, Douglas",13,"douglas","Roseburg","Roseburg, Oregon",-123.3417381,43.216505,"largest community"
+"14","Klamath","Klamath Falls",21322,"Klamath Falls (Klamath): 21322","Klamath Falls, Klamath",14,"klamath","Klamath Falls","Klamath Falls, Oregon",-121.7816704,42.224867,"largest community"
+"15","Umatilla","Hermiston",17150,"Hermiston (Umatilla): 17150","Hermiston, Umatilla",15,"umatilla","Hermiston","Hermiston, Oregon",-119.2894604,45.8404101,"largest community"
+"16","Coos","Coos Bay",16129,"Coos Bay (Coos): 16129","Coos Bay, Coos",16,"coos","Coos Bay","Coos Bay, Oregon",-124.2178903,43.3665007,"largest community"
+"17","Wasco","The Dalles",15276,"The Dalles (Wasco): 15276","The Dalles, Wasco",17,"wasco","The Dalles","The Dalles, Oregon",-121.1786823,45.5945645,"largest community"
+"18","Columbia","St. Helens",13169,"St. Helens (Columbia): 13169","St. Helens, Columbia",18,"columbia","St. Helens","St. Helens, Oregon",-122.8158185,45.8590111,"largest community"
+"19","Union","La Grande",13079,"La Grande (Union): 13079","La Grande, Union",19,"union","La Grande","La Grande, Oregon",-118.0877188,45.3245771,"largest community"
+"20","Malheur","Ontario",11045,"Ontario (Malheur): 11045","Ontario, Malheur",20,"malheur","Ontario","Ontario, Oregon",-116.9629378,44.0265525,"largest community"
+"21","Lincoln","Newport",10139,"Newport (Lincoln): 10139","Newport, Lincoln",21,"lincoln","Newport","Newport, Oregon",-124.0234505,44.6367836,"largest community"
+"22","Baker","Baker City",9757,"Baker City (Baker): 9757","Baker City, Baker",22,"baker","Baker City","Baker City, Oregon",-117.8343848,44.7748748,"largest community"
+"23","Clatsop","Astoria",9595,"Astoria (Clatsop): 9595","Astoria, Clatsop",23,"clatsop","Astoria","Astoria, Oregon",-123.765416,46.2,"largest community"
+"24","Crook","Prineville",9419,"Prineville (Crook): 9419","Prineville, Crook",24,"crook","Prineville","Prineville, Oregon",-120.8344664,44.2998485,"largest community"
+"25","Hood River","Hood River",7476,"Hood River (Hood River): 7476","Hood River, Hood River",25,"hood river","Hood River","Hood River, Oregon",-121.5214623,45.7053966,"largest community"
+"26","Jefferson","Madras",6504,"Madras (Jefferson): 6504","Madras, Jefferson",26,"jefferson","Madras","Madras, Oregon",-121.1294872,44.6334544,"largest community"
+"27","Curry","Brookings",6390,"Brookings (Curry): 6390","Brookings, Curry",27,"curry","Brookings","Brookings, Oregon",-124.23,42.0526114,"largest community"
+"28","Tillamook","Tillamook",5063,"Tillamook (Tillamook): 5063","Tillamook, Tillamook",28,"tillamook","Tillamook","Tillamook, Oregon",-123.8440137,45.4562158,"largest community"
+"29","Morrow","Boardman",3347,"Boardman (Morrow): 3347","Boardman, Morrow",29,"morrow","Boardman","Boardman, Oregon",-119.7005834,45.839855,"largest community"
+"30","Lake","Lakeview",2867,"Lakeview (Lake): 2867","Lakeview, Lake",30,"lake","Lakeview","Lakeview, Oregon",-120.345792,42.1887721,"largest community"
+"31","Harney","Burns",2760,"Burns (Harney): 2760","Burns, Harney",31,"harney","Burns","Burns, Oregon",-119.0541032,43.5862606,"largest community"
+"32","Wallowa","Enterprise",1872,"Enterprise (Wallowa): 1872","Enterprise, Wallowa",32,"wallowa","Enterprise","Enterprise, Oregon",-117.2787816,45.4262617,"largest community"
+"33","Grant","John Day",1721,"John Day (Grant): 1721","John Day, Grant",32,"grant","John Day","John Day, Oregon",-118.95301,44.4159883,"largest community"
+"34","Gilliam","Arlington",571,"Arlington (Gilliam): 571","Arlington, Gilliam",33,"gilliam","Arlington","Arlington, Oregon",-120.2008761,45.716796,"largest community"
+"35","Wheeler","Fossil",403,"Fossil (Wheeler): 403","Fossil, Wheeler",33,"wheeler","Fossil","Fossil, Oregon",-120.2161373,44.9981864,"largest community"
+"36","Sherman","Wasco",381,"Wasco (Sherman): 381","Wasco, Sherman",33,"sherman","Wasco","Wasco, Oregon",-120.698113,45.5917918,"largest community"

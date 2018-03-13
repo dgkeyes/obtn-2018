@@ -102,6 +102,7 @@ dk_save_plot_by_measure_weird_ones <- function(plot.category,
 # BY COUNTY INDICATORS ----------------------------------------------------
 
 
+
 county.data <- read_excel(path = "data/OBTN final data by county.xlsx", sheet = 2, skip = 1) %>%
      set_names(c("geography",
                  "largest_community",
@@ -894,13 +895,11 @@ save_pop_pyramid("urban")
 single.measures.list <- excel_sheets("data/OBTN final data by measure.xlsx")
 
 
-
-
 ## Get first sheet
-single.measures.data <- read_excel(path = "data/OBTN final data by measure.xlsx", 
+single.measures.data <- read_excel(path = "data/OBTN final data by measure.xlsx",
                                    sheet = single.measures.list[2]) %>%
      select(-3) %>%
-     set_names(c(single.measures.list[2], 
+     set_names(c(single.measures.list[2],
                  "geography")) %>%
      mutate(geography = str_replace(geography, " County, Oregon", "")) %>%
      mutate(geography = str_replace(geography, "Rural Oregon", "Rural")) %>%
@@ -911,26 +910,26 @@ single.measures.data <- read_excel(path = "data/OBTN final data by measure.xlsx"
 ## Get later sheets and add them to first one
 
 for (i in 3:length(single.measures.list)) {
-     single.measures.data.temp <- read_excel(path = "data/OBTN final data by measure.xlsx", 
+     single.measures.data.temp <- read_excel(path = "data/OBTN final data by measure.xlsx",
                                              sheet = i) %>%
           select(-3) %>%
-          set_names(c(single.measures.list[i], 
+          set_names(c(single.measures.list[i],
                       "geography")) %>%
           mutate(geography = str_replace(geography, " County, Oregon", "")) %>%
           mutate(geography = str_replace(geography, "Rural Oregon", "Rural")) %>%
           mutate(geography = str_replace(geography, "Urban Oregon", "Urban")) %>%
           mutate(geography = str_to_lower(geography))
-     
-     single.measures.data <<- left_join(single.measures.data, 
-                                        single.measures.data.temp, 
+
+     single.measures.data <<- left_join(single.measures.data,
+                                        single.measures.data.temp,
                                         by = "geography")
 }
 
 ## Add in mobile home data (not sure why it's not getting imported, but whatevs)
 mobile.home.data <- read_excel(path = "data/OBTN final data by measure.xlsx", 
-                               sheet = 30) %>%
+                               sheet = "Mobile Homes") %>%
      select(one_of("Rank", "County")) %>%
-     set_names(c(single.measures.list[30], 
+     set_names(c("Mobile Homes", 
                  "geography")) %>%
      mutate(geography = str_replace(geography, " County, Oregon", "")) %>%
      mutate(geography = str_replace(geography, "Rural Oregon", "Rural")) %>%
@@ -940,6 +939,8 @@ mobile.home.data <- read_excel(path = "data/OBTN final data by measure.xlsx",
 single.measures.data <<- left_join(single.measures.data, 
                                    mobile.home.data, 
                                    by = "geography")
+
+
 
 # Reorder, putting county first
 
@@ -975,7 +976,9 @@ oregon.map.single.measure <- map_data("county") %>%
 
 
 
-for (i in 2:30) {
+
+
+for (i in 2:31) {
      oregon.map.single.measure.temp <- oregon.map.single.measure %>%
           filter(measure == single.measures.list[i])
      
@@ -1214,23 +1217,48 @@ ggplot() +
      tfff.map.theme
 
 ggsave("misc/notable features.png")
-write.csv(notable.features.statewide, "misc/notable features.csv")  
+# write.csv(notable.features.statewide, "misc/notable features.csv")  
+write.csv(notable.features, "misc/notable features.csv")  
 
 ## Largest community in county
 
-largest.community.by.county <- largest.communities %>%
-     filter(!is.na(name)) %>%
-     filter(county != "oregon") %>%
-     arrange(name) %>%
-     mutate(label_number = row_number(name))
+largest.community.by.county <- county.data %>%
+     filter(!is.na(largest_community)) %>%
+     filter(geography != "oregon") %>%
+     arrange(largest_community) %>%
+     select(geography:largest_community_pop) %>%
+     mutate(geography = str_to_title(geography)) %>%
+     mutate(text_to_use = paste(largest_community, 
+                                " (",
+                                geography,
+                                "): ",
+                                largest_community_pop,
+                                sep="")) %>%
+     arrange(-largest_community_pop) %>%
+     mutate(join_text = paste(largest_community,
+                              ", ",
+                              geography,
+                              sep = "")) %>%
+     mutate(label_number = rev(dense_rank(largest_community_pop)))
+
+
+largest.communities <- largest.communities %>%
+     mutate(join_text = paste(name,
+                              ", ",
+                              str_to_title(county),
+                              sep = ""))
+
+largest.community.by.county <- left_join(largest.community.by.county,
+                                         largest.communities,
+                                         by = "join_text")
 
 write.csv(largest.community.by.county, "misc/largest communities.csv")    
 
 largest.community.by.county.pdx.salem <- largest.community.by.county %>%
-     filter(name == "Portland" | name == "Salem")
+     filter(largest_community == "Portland" | largest_community == "Salem")
 
 largest.community.by.county <- largest.community.by.county %>%
-     filter(name != "Portland" & name != "Salem")
+     filter(largest_community != "Portland" & largest_community != "Salem")
 
 ggplot() +
      geom_polygon(data = oregon.map.by.county.all, 
@@ -1256,5 +1284,37 @@ ggplot() +
      coord_map() +
      tfff.map.theme
 
-ggsave("misc/largest communities.png")
+
+ggplot() +
+     geom_polygon(data = oregon.map.by.county.all, 
+                  aes(x = long, 
+                      y = lat, 
+                      group = group),
+                  fill = tfff.light.green,
+                  color = "white",
+                  size = 1) +
+     geom_text(data = largest.community.by.county,
+                label = largest.community.by.county$label_number, 
+                aes(x = largest.community.by.county$lon,
+                    y = largest.community.by.county$lat),
+                color = tfff.dark.green,
+                family = "Calibri",
+               fontface = "bold") +
+     geom_text_repel(data = largest.community.by.county.pdx.salem,
+                      label = largest.community.by.county.pdx.salem$label_number, 
+                      aes(x = largest.community.by.county.pdx.salem$lon,
+                          y = largest.community.by.county.pdx.salem$lat),
+                      color = tfff.dark.green,
+                      family = "Calibri",
+                     fontface = "bold",
+                      segment.color = tfff.dark.green) +
+     coord_map() +
+     tfff.map.theme
+
+
+ggsave("misc/largest communities.pdf",
+       device = cairo_pdf,
+       height = 4,
+       width = 5, 
+       units = "in")
 
