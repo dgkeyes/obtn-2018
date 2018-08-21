@@ -1,361 +1,1505 @@
-#### Packages ####
+# PACKAGES AND THEMES ----------------------------------------------------------------
 
 library(tidyverse) 
 library(ggplot2)
+library(ggrepel)
 library(readxl)
 library(stringr)
-library(XML)
-library(reshape2)
 library(ggmap)
 library(maps)
 library(scales)
-library(rgdal)
-library(gridExtra)
-library(grid)
+library(gganimate)
 library(googlesheets)
-library(kableExtra)
-library(knitr)
-library(lettercase)
-library(ggrepel)
-library(tigris)
-
-#### Get data ####
-
-source("~/Google Drive/Work/R/TFFF themes.R")
-dc.data <- read_excel(path = "data/dc header indicators.xlsx", sheet = 2)
+library(extrafont)
 
 
 
-#### Population pyramid ####
 
-population.pyramid <- dc.data %>%
-     filter(Geography == "Douglas County, Oregon") %>%
-     gather(`Males 0-4`:`Females 85+`, key = "age", value = "pct") %>%
-     mutate(number = pct * 107194) %>%
-     select(one_of(c("Geography", "age", "pct", "number"))) 
 
-population.pyramid$age <- str_replace(population.pyramid$age, "Males ", "")
-population.pyramid$age <- str_replace(population.pyramid$age, "Females ", "")
+# loadfonts()
 
-population.pyramid$gender[1:18] <- "men"
-population.pyramid$gender[19:36] <- "women"
 
-total.population <- sum(population.pyramid$number, na.rm = TRUE)
-population.pyramid$number[population.pyramid$gender == "women"] <- population.pyramid$number * -1
-population.pyramid$pct.formatted <- population.pyramid$pct
-population.pyramid$pct.formatted[population.pyramid$gender == "women"] <- population.pyramid$pct * -1
+source("https://raw.githubusercontent.com/dgkeyes/dk-functions-and-themes/master/themes/tfff_themes.R")
 
-age.order <- population.pyramid$age[1:18]
 
-population.pyramid$age <- factor(population.pyramid$age, levels = age.order)
 
-# population.pyramid$age <- str_replace(population.pyramid$age, "0-4", "  0-4  ")
+
+# DK FUNCTIONS ------------------------------------------------------------
+
+dk_save_plot <- function(plot.category, plotwidth, plotheight) {
+     ggsave(filename = paste("plots/final/by county/",
+                             oregon.counties[i],
+                             "/",
+                             plot.category,
+                             " - ",
+                             oregon.counties[i],
+                             ".pdf", sep=""),
+            device = cairo_pdf,
+            height = plotheight,
+            width = plotwidth, 
+            units = "in")
+     
+}
+
+dk_save_plot_png <- function(plot.category, plotwidth, plotheight) {
+     ggsave(filename = paste("plots/final/by county/",
+                             oregon.counties[i],
+                             "/",
+                             plot.category,
+                             " - ",
+                             oregon.counties[i],
+                             ".png", sep=""),
+            dpi = 300,
+            height = plotheight,
+            width = plotwidth, 
+            units = "in")
+     
+}
+
+dk_save_plot_svg <- function(plot.category, plotwidth, plotheight) {
+     ggsave(filename = paste("plots/final/by county/",
+                             oregon.counties[i],
+                             "/",
+                             plot.category,
+                             " - ",
+                             oregon.counties[i],
+                             ".svg", sep=""),
+            # device = cairo_pdf,
+            # dpi = 300,
+            height = plotheight,
+            width = plotwidth, 
+            units = "in")
+     
+}
+
+
+
+dk_save_plot_by_measure <- function(plot.category, plotwidth, plotheight) {
+     ggsave(filename = paste("plots/final/temp/",
+                             plot.category,
+                             "/",
+                             oregon.counties[i],
+                             ".pdf", sep=""),
+            # type = "cairo",
+            device = cairo_pdf,
+            dpi = 300,
+            width = plotwidth,
+            height = plotheight)
+}
+
+dk_save_plot_by_measure_weird_ones <- function(plot.category, 
+                                               plotwidth, 
+                                               plotheight) {
+     ggsave(filename = paste("plots/final/by measure/",
+                             plot.category,
+                             "/",
+                             urban.rural.oregon[i],
+                             ".pdf", sep=""),
+            # type = "cairo",
+            device = cairo_pdf,
+            dpi = 300,
+            width = plotwidth,
+            height = plotheight)
+}
+
+
+
+# BY COUNTY INDICATORS ----------------------------------------------------
+
+
+
+county.data <- read_excel(path = "data/OBTN final data by county.xlsx", sheet = 2, skip = 1) %>%
+     set_names(c("geography",
+                 "largest_community",
+                 "largest_community_pop",
+                 "largest_community_pop_moe",
+                 "secondary_community",
+                 "secondary_community_pop",
+                 "secondary_community_pop_moe",
+                 "tertiary_community",
+                 "tertiary_community_pop",
+                 "tertiary_community_pop_moe",
+                 "feature_1",
+                 "feature_2",
+                 "feature_3",
+                 "tribal_services",
+                 "employment_1",
+                 "employment_2",
+                 "employment_3",
+                 "median_income",
+                 "median_income_moe",
+                 "land_area",
+                 "public_lands",
+                 "population_pct_white",
+                 "population_pct_black",
+                 "population_pct_native_american",
+                 "population_pct_asian",
+                 "population_pct_hpi",
+                 "population_pct_other",
+                 "population_pct_multi",
+                 "population_pct_latino",
+                 "males_0_4",
+                 "males_5_9",
+                 "males_10_14",
+                 "males_15_19",
+                 "males_20_24",
+                 "males_25_29",
+                 "males_30_34",
+                 "males_35_39",
+                 "males_40_44",
+                 "males_45_49",
+                 "males_50_54",
+                 "males_55_59",
+                 "males_60_64",
+                 "males_65_69",
+                 "males_70_74",
+                 "males_75_79",
+                 "males_80_85",
+                 "males_85_plus",
+                 "females_0_4",
+                 "females_5_9",
+                 "females_10_14",
+                 "females_15_19",
+                 "females_20_24",
+                 "females_25_29",
+                 "females_30_34",
+                 "females_35_39",
+                 "females_40_44",
+                 "females_45_49",
+                 "females_50_54",
+                 "females_55_59",
+                 "females_60_64",
+                 "females_65_69",
+                 "females_70_74",
+                 "females_75_79",
+                 "females_80_85",
+                 "females_85_plus",
+                 "total_pop",
+                 "population_trend",
+                 "rural_population_pct",
+                 "migration")) %>%
+     mutate(geography = str_replace(geography, " County, Oregon", "")) %>%
+     mutate(geography = str_replace(geography, "Rural Oregon", "Rural")) %>%
+     mutate(geography = str_replace(geography, "Urban Oregon", "Urban")) %>%
+     mutate(geography = str_to_lower(geography))
+
+county.data.filtered <- county.data %>%
+     filter(geography != "rural") %>%
+     filter(geography != "urban") %>%
+     filter(geography != "oregon")
+
+
+# BY MEASURE INDICATORS ---------------------------------------------------
+
+
+
+# DEFINE OREGON COUNTIES VARIABLES AND CREATE DIRECTORIES  --------------------------------------
+
+# Create Oregon Counties variable
+
+oregon.counties <- county.data$geography
+oregon.counties <- oregon.counties[4:39] # Remove urban, rural, and Oregon
+
+oregon.total.population <- county.data$total_pop[3]
+
+
+
+# Create directories for each count to save final plots -------------------
+
+
+
+# dir.create("plots/final")
+# dir.create("plots/final/by county")
+# dir.create("plots/final/by measure")
+# dir.create("plots/final/by measure/maps")
+# dir.create("plots/final/by measure/industries")
+# 
+# for (i in 1:36) {
+#      dir.create(paste("plots/final/by county/", oregon.counties[i], sep =""))
+# }
+
+
+
+# INSET MAPS ------------------------------------------------
+
+for (i in 1:length(oregon.counties)) {
+     
+     oregon.map.inset <- map_data("county") %>%
+          filter(region == "oregon") 
+     
+     oregon.map.county.inset <- map_data("county") %>%
+          filter(region == "oregon") %>%
+          filter(subregion == oregon.counties[i])
+     
+     
+     ggplot(data = oregon.map.inset, aes(x = long, y = lat, 
+                                         group = group)) +
+          geom_polygon(color = tfff.medium.gray,
+                       fill = tfff.medium.gray) +
+          geom_polygon(data = oregon.map.county.inset, 
+                       fill = tfff.light.green) +
+          coord_map() +
+          scale_x_continuous(expand = c(0, 0)) +
+          scale_y_continuous(expand = c(0, 0)) +
+          tfff.map.theme 
+     
+     dk_save_plot("inset map", 1.2313, 1.1225)
+     
+}
+
+
+
+
+
+
+
+# COUNTY MAPS --------------------------------------------------------
+
+
+
+MAKE DATA FRAMES FOR LARGEST COMMUNITY AND NOTABLE FEATURES
+
+# register_google(key = "ADD YOUR KEY HERE")
+# 
+# largest.communities <- county.data %>%
+#      select(one_of("largest_community", "geography")) %>%
+#      set_names("name", "county") %>%
+#      mutate(for_geocode = paste(name, ", Oregon", sep="")) %>%
+#      mutate_geocode(for_geocode)
 # 
 # 
-# population.pyramid.women <- population.pyramid %>%
-#      filter(gender == "women")
 # 
-# population.pyramid.men <- population.pyramid %>%
-#      filter(gender == "men")
+# notable.features <- county.data %>%
+#      select(one_of(c("geography", "feature_1", "feature_2", "feature_3"))) %>%
+#      set_names(c("county", "feature_1", "feature_2", "feature_3")) %>%
+#      gather(key = location, value = feature, -county) %>%
+#      select(-location) %>%
+#      arrange(county) %>%
+#      mutate(for_geocode = paste(feature, ", ", str_to_title(county), " County, Oregon", sep ="")) %>%
+#      mutate_geocode(for_geocode)
+
+### Save data frames with new names so I don't have to re-geocode theme
+
+# notable.features.post.geocode <- notable.features
+# largest.communities.post.geocode <- largest.communities
+
+### Recreate data frames so I don't have to re-geocode them
+
+notable.features <- notable.features.post.geocode
+largest.communities <- largest.communities.post.geocode
 
 
-ggplot(population.pyramid, aes(x = age, y = pct.formatted, fill = gender)) +
-     geom_bar(data = population.pyramid, 
-              stat = "identity",
-              width = .7) +
-     geom_label(label = population.pyramid$age, 
-                aes(x = age, y = 0), 
-                fill = "white", 
-                label.size = 0, 
-                size = tfff.base.font.size,
-               color = tfff.dark.gray) +
-     geom_label(aes(x = 17, y = .045),
-                label = "Men",
-                color = "white",
-                fill = tfff.dark.green,
-                size = tfff.base.font.size,
-                label.size = 0,
-                label.padding = unit(.5, "lines")) +
-     geom_label(aes(x = 17, y = -.045),
-                label = "Women",
-                color = "white",
-                fill = tfff.light.green,
-                size = tfff.base.font.size,
-                label.size = 0,
-                label.padding = unit(.5, "lines")) +
-     coord_flip() +
-     scale_y_continuous(breaks = seq(-.05, .05, by = .01),
-                        limits = c(-.05, .05),
-                        labels = c("5%", "4%", "3%", "2%", "1%", "0", "1%", "2%", "3%", "4%", "5%")) +
-     scale_fill_manual(values = c(tfff.dark.green, tfff.light.green)) +
+### Manual geocoding for places that need it
+
+# Portland in Multnomah 
+largest.communities[29,4] <- -122.668559
+largest.communities[29,5] <- 45.457659
+
+# Portland in Clackamas 
+largest.communities[6,4] <- -122.653693
+largest.communities[6,5] <- 45.456504
+
+# Portland in Washington
+largest.communities[37,4] <- -122.746793
+largest.communities[37,5] <- 45.45.470522
+
+
+# Astoria
+largest.communities[7,4] <- -123.765416
+largest.communities[7,5] <- 46.2
+
+# Haystack Rock
+
+largest.communities[11,4] <- -123.968019
+largest.communities[11,5] <- 45.884584
+
+# Sunset Bay State Park
+largest.communities[17,4] <- -124.373917
+largest.communities[17,5] <- 43.331414
+
+# Shore Acres State Park
+largest.communities[18,4] <- -124.385319
+largest.communities[18,5] <- 43.322654
+
+
+# Ft Stevens
+notable.features[12,4] <- -123.95
+notable.features[12,5] <- 46.197754
+
+# Wallowa Whitman (Baker)
+notable.features[1,4] <- -117.263415
+notable.features[1,5] <- 45.007738 
+
+# Hells Canyon (Baker)
+notable.features[2,4] <- -116.871924
+notable.features[2,5] <- 45.058014 
+
+# Oregon Dunes (Douglas)
+notable.features[28,4] <- -124.196556
+notable.features[28,5] <- 43.628083
+
+
+# Oregon Dunes (Coos)
+
+notable.features[16,4] <- -124.212523
+notable.features[16,5] <- 43.593794
+
+# Rogue River - Siskiyou National Forest
+
+notable.features[51,2] <- "Rogue River-Siskiyou National Forest"
+notable.features[51,4] <- -123.832774
+notable.features[51,5] <- 42.420746
+
+
+
+
+# Valley of the Giants
+notable.features[83,4] <- -123.7
+notable.features[83,5] <- 44.938892
+
+
+# Nehalem Bay State Park
+notable.features[92,4] <- -123.896339
+notable.features[92,5] <- 45.70082
+
+# Cape Meares National Wildlife Refuge
+notable.features[93,4] <- -123.92
+notable.features[93,5] <- 45.486949
+
+
+
+
+
+# Cape Blanco (Curry)
+
+notable.features[23,4] <- -124.5276
+
+# Brookings (Curry)
+
+largest.communities[11,4] <- -124.243600
+largest.communities[11,5] <- 42.054356
+
+# Umatilla National Forest (Grant)
+notable.features[35,4] <- -118.643033
+notable.features[35,5] <- 44.985688
+
+
+# Oregon Dunes (Lane)
+notable.features[58,4] <- -124.134574
+notable.features[58,5] <- 43.950020
+
+# Lincoln county (everything)
+
+largest.communities[24,4] <- largest.communities[24,4] + .03
+notable.features[61,4] <- notable.features[61,4] + .03
+notable.features[62,4] <- notable.features[62,4] + .03
+notable.features[63,4] <- notable.features[63,4] + .03
+
+# Williamette National Forest (Linn)
+notable.features[66,4] <- -122.353905
+notable.features[66,5] <- 44.281151
+
+# Umatilla National Forest (Morrow)
+notable.features[73,4] <- -119.331740
+notable.features[73,5] <- 45.081194
+
+# Mt Hood National Forest (Multnomah)
+notable.features[77,4] <- -121.954062 
+notable.features[77,5] <- 45.485373
+
+# Mark Hatfield Wilderness (Multnomah)
+notable.features[78,4] <- -121.960153
+notable.features[78,5] <- 45.604172
+
+# Mt Hood National Forest (Wasco)
+notable.features[106,4] <- -121.434747 
+notable.features[106,5] <- 45.420526
+
+# Memaloose State Park (Wasco)
+notable.features[108,5] <- 45.67
+
+# Umatilla National Forest (Union)
+notable.features[97,4] <- -118.55
+
+# Umatilla National Forest (Wheeler)
+notable.features[114,4] <- -119.772718
+notable.features[114,5] <- 44.959235 
+
+# Ochoco National Forest (Wheeler)
+notable.features[112,4] <- -119.994371
+notable.features[112,5] <- 44.457416 
+
+# Mt Hebo (Yamhill)
+notable.features[115,5] <- 45.2
+
+## Merge stuff
+
+notable.features <- notable.features %>%
+     mutate(type = "notable feature") %>%
+     set_names(c("county", "name", "for_geocode", "lon", "lat", "type"))
+
+
+largest.communities <- largest.communities %>%
+     mutate(type = "largest community") %>%
+     select(one_of(c("county", "name", "for_geocode", "lon", "lat", "type"))) 
+
+
+all.places <- rbind(notable.features, largest.communities) %>%
+     filter(!is.na(name)) %>%
+     mutate(name_wrapped = str_wrap(name, width = 20)) %>%
+     mutate(fill = ifelse(type == "notable feature", 
+                          "#ffffff", 
+                          tfff.dark.green)) %>%
+     mutate(color = ifelse(type == "notable feature", 
+                           tfff.dark.green, 
+                           "#ffffff")) %>%
+     mutate(fontweight = ifelse(type == "notable feature", 
+                                "plain", 
+                                "bold")) %>%
+     mutate(shape = "square") %>%
+     mutate(shape = ifelse(county == "curry" |
+                                county == "harney" |
+                                county == "klamath" |
+                                county == "lincoln" |
+                                county == "malheur" |
+                                county == "morrow" |
+                                county == "sherman" |
+                                county == "tillamook",
+                           "tall", 
+                           shape)) %>%
+     mutate(shape = ifelse(county == "deschutes" |
+                                county == "jefferson" |
+                                county == "lane" |
+                                county == "multnomah" |
+                                county == "yamhill",
+                           "long", 
+                           shape))
+
+
+
+## Make county maps
+
+for (i in 1:length(oregon.counties)) {
      
-     tfff.population.pyramid.theme
-
-
-ggsave("plots/douglas population pyramid.png")
-
-
-
-#### Race/ethnicity ####
-
-race.ethnicity <- dc.data %>%
-     filter(Geography == "Douglas County, Oregon") %>%
-     select(contains("Percentage of Population")) %>%
-     set_names(c("White",
-                 "African American", 
-                 "American Indian or Alaska Native", 
-                 "Asian",
-                 "Native Hawaiian/Pacific Islander", 
-                 "Other Race", 
-                 "Multiracial", 
-                 "Latino")) %>%
-     gather() %>%
-     set_names(c("racial.ethnic.group", "pct")) %>%
-     mutate(pct = round(pct, digits = 4)) %>%
-     mutate(location = "Douglas")
-
-
-race.ethnicity.all.but.white <- race.ethnicity %>%
-     filter(racial.ethnic.group != "White")
-
-race.ethnicity.white <- race.ethnicity %>%
-     filter(racial.ethnic.group == "White")
-
-
-figure.population.race <- ggplot(race.ethnicity, aes(x = reorder(racial.ethnic.group, pct), y = pct)) +
-     # geom_bar(stat = "identity", position = "fill") +
-     geom_bar(stat = "identity", fill = tfff.dark.green) +
-     geom_text(data = race.ethnicity.all.but.white,
-               label = paste(race.ethnicity.all.but.white$racial.ethnic.group, percent(race.ethnicity.all.but.white$pct), sep =": "), 
-               hjust = 0,
-               nudge_y = .02,
-               color = tfff.dark.gray,
-               fontface = "bold") +
-     geom_text(data = race.ethnicity.white,
-               label = paste(race.ethnicity.white$racial.ethnic.group, percent(race.ethnicity.white$pct), sep =": "), 
-               hjust = 0,
-               nudge_y = -.18,
-               color = "white",
-               fontface = "bold") +
-     # scale_fill_manual(values = c(tfff.light.green, tfff.dark.green, tfff.yellow, tfff.orange, tfff.blue, tfff.red, tfff.brown, tfff.medium.gray)) +
-     tfff.100.bar.chart.theme +
-     coord_flip()
-
-
-ggsave("plots/race ethnicity bar chart.eps", height = 3)     
-
-
-
-#### Notable features ####
-
-
-notable.features <- dc.data %>%
-     filter(Geography == "Douglas County, Oregon") %>%
-     select(one_of(c("Largest Comm.", "Features (1)", "Features (2)", "Features (3)"))) %>%
-     gather() %>%
-     # select(value) %>%
-     set_names("type", "feature") %>%
-     mutate_geocode(feature)
-
-notable.features$type <- str_replace(notable.features$type, "Largest Comm.", "Largest community")
-notable.features$type <- str_replace(notable.features$type, "Features \\(1\\)", "Notable feature")
-notable.features$type <- str_replace(notable.features$type, "Features \\(2\\)", "Notable feature")
-notable.features$type <- str_replace(notable.features$type, "Features \\(3\\)", "Notable feature")
-notable.features$feature <- str_replace(notable.features$feature, "Umpqua National Forest", "Umpqua \nNational Forest")
-notable.features$feature <- str_replace(notable.features$feature, "Oregon Dunes National Recreation Area", "Oregon Dunes")
-
-
-dc.map <- map_data('county') %>%
-     filter(region == "oregon") %>%
-     filter(subregion == "douglas")
-
-## Map of DC location in Oregon
-
-ggplot (oregon.map, aes(x = long, y = lat, group=subregion)) +
-     geom_polygon(fill = tfff.light.gray, color = tfff.light.gray) +
-     geom_polygon(data = oregon.map.douglas,
-                  aes(x = long, y = lat, group = subregion),
-                  fill = tfff.light.green) +
-     tfff.map.theme
+     oregon.map.by.county <- map_data("county") %>%
+          filter(region == "oregon") %>%
+          filter(subregion == oregon.counties[i])
      
-## Map of notable features in DC
-
-figure.notable.features <- ggplot () +
-     geom_polygon(data = dc.map,
-                  aes(x = long, y = lat, group = subregion),
-                  fill = tfff.light.green) +
-     geom_point(data = notable.features,
-                aes(x = notable.features$lon, y = notable.features$lat),
-                color = tfff.dark.green,
-                size = tfff.base.font.size * .7) +
-    
-     geom_point(data = subset(notable.features, type == "Largest community"),
-                aes(x = lon, y = lat),
-                color = "white",
-                size = tfff.base.font.size * .3) +
+     largest.community.temp <- largest.communities %>%
+          filter(county == oregon.counties[i])
      
-     geom_text(data = notable.features,
-               label = notable.features$feature, 
-               aes(x = notable.features$lon, y = notable.features$lat,
-                   lineheight = .9),
-               color = tfff.dark.green,
-               size = tfff.base.font.size * .9,
-               hjust = 0,
-               nudge_x = .05) +
-     # scale_x_discrete(labels = function(feature) str_wrap(feature, width = 30)) +
-     tfff.map.theme
-
-
-ggsave("plots/dc notable features map.png", dpi = 300)
-
-
-#### Median income ####
-
-median.income <- dc.data %>%
-     filter(Geography == "Douglas County, Oregon" | Geography == "Oregon") %>%
-     select(one_of(c("Geography", "Median Income"))) %>%
-     set_names(c("location", "income"))
-
-median.income$location <- str_replace(median.income$location, "Douglas County, Oregon", "Douglas")
-
-figure.median.income <- ggplot(median.income, aes(x = location, y = income, fill = factor(location))) +
-     geom_bar(stat = "identity",
-              width = 1) +
-     geom_text(label = dollar(median.income$income),
-               size = tfff.base.font.size,
-               color = "white",
-               fontface = "bold",
-               nudge_y = -8000) +
-     geom_text(label = median.income$location,
-               hjust = .1,
-               size = tfff.base.font.size,
-               color = "white",
-               fontface = "bold",
-               aes(x = median.income$location, y = 4000)) +
-     tfff.bar.chart.theme +
-     scale_fill_manual(values = c(tfff.dark.green, tfff.medium.gray)) +
-     # scale_color_manual(values = c("white", "black")) +
-     coord_flip()
-
-ggsave("plots/median income.png")
-
-
-#### Grid Extra ####
-
-title <- textGrob("test")
-land.text <- textGrob("landinfo")
-population.text <- textGrob("populationinfo")
+     notable.features.temp <- notable.features %>%
+          filter(county == oregon.counties[i])
      
-top.row <- grid.arrange(title, 
-                        land.text,
-                        ncol = 2,
-                        heights=1:2, widths=1:2)
-
-second.row <- grid.arrange(population.text,
-                           figure.notable.features,
-                           ncol = 2, 
-                           heights=1:2, widths=1:2)
-
-grid.arrange(top.row, second.row)
-
-grid.arrange(title,
-             land.text,
-             population.text,
-             figure.notable.features, 
-             figure.population.pyramid, 
-             figure.population.race, 
-             figure.median.income, 
-             ncol = 2)
-
-
-#### Single measure pages data ####
-
-obtn.data.by.measure.sheet <- gs_title("OBTN data by measure")
-
-
-obtn.data.by.measure <- gs_read(obtn.data.by.measure.sheet, ws = "all") %>%
-     filter(county != "oregon") %>%
-     filter(county != "rural") %>%
-     filter(county != "urban") %>%
-     filter(!is.na(number)) %>%
-     mutate(rank = min_rank((number))) %>%
-     mutate(ordering = order((number))) %>%
-     mutate(county = factor(county)) %>%
-     mutate(county = fct_reorder(county, -number))
+     all.places.temp <- all.places %>%
+          filter(county == oregon.counties[i])
      
-
-obtn.data.by.measure.comparisons <- gs_read(obtn.data.by.measure.sheet, ws = "all") %>%
-     filter(county == "oregon" | county == "rural" | county == "urban")
-
-obtn.data.by.measure.nas <- gs_read(obtn.data.by.measure.sheet, ws = "all") %>%
-     filter(is.na(number))
-
-ggplot(obtn.data.by.measure, aes(x = county, y = number)) +
-     # geom_bar(stat = "identity") +
-     geom_point(size = 15,
-                fill = "white",
-                color = "black",
-                alpha = 0.5) +
-     # geom_segment(aes(x = ))
-     geom_text(label = percent(obtn.data.by.measure$number)) +
-     # annotate("segment",
-     #          y = obtn.data.by.measure.comparisons$number,
-     #          yend = obtn.data.by.measure.comparisons$number,
-     #          x = 0,
-     #          xend = max(obtn.data.by.measure$ordering) + 1,
-     #          alpha = 0.5) +
-     geom_hline(yintercept=obtn.data.by.measure.comparisons$number,
-                linetype = "dashed") +
-     # geom_label_repel(data = obtn.data.by.measure.comparisons, 
-     #                 aes(x = max(obtn.data.by.measure$ordering) + 1, y = number),
-     #                 label = percent(obtn.data.by.measure.comparisons$number),
-     #                 segment.color = "transparent",
-     #                 nudge_x = 0.1) +
-     # annotate("text",
-     #          y = obtn.data.by.measure.comparisons$number,
-     #          x = 36,
-     #          label = obtn.data.by.measure.comparisons$county) +
-     scale_y_continuous(limits = c(0, .11),
-                        labels = scales::percent) +
-     scale_x_discrete(
-          # limits = c(0, 37),
-          labels = str_title_case(rev(obtn.data.by.measure$county))) +
-          # labels = paste(str_title_case(rev(obtn.data.by.measure$county)),
-          #                " (",
-          #                percent(rev(obtn.data.by.measure$number)),
-          #                ")",
-          #                sep="")) +
-     coord_flip() 
-     # theme_minimal() + tfff.bar.chart.with.benchmark.theme
+     ## Plot map
+     
+     ggplot() +
+          geom_polygon(data = oregon.map.by.county, 
+                       aes(x = long, 
+                           y = lat, 
+                           group = group),
+                       fill = tfff.light.green,
+                       color = tfff.light.green,
+                       size = 1) +
+          geom_point(data = notable.features.temp,
+                     aes(x = notable.features.temp$lon,
+                         y = notable.features.temp$lat),
+                     size = 2,
+                     alpha = .8,
+                     color = tfff.dark.green) +
+          geom_point(data = largest.community.temp,
+                     aes(x = largest.community.temp$lon,
+                         y = largest.community.temp$lat),
+                     size = 2,
+                     shape = 21,
+                     stroke = 1,
+                     fill = "white",
+                     color = tfff.dark.green) +
+          
+          coord_map() +
+          tfff.map.theme
+     
+     
+     if (all.places.temp$shape[1] == "square") {
+          dk_save_plot("county maps", 4.03, 2.7592)
+     } else if (all.places.temp$shape[1] == "tall") {
+          dk_save_plot("county maps", 1.8813, 4.325)
+     } else if (all.places.temp$shape[1] == "long") {
+          dk_save_plot("county maps", 3.9637, 1.998)
+     }
+     
+     
+     
+}
 
 
-obtn.data.by.measure %>%
-     kable("html") %>%
-     kable_styling(bootstrap_options = c("striped", "hover")) 
 
 
-# Single measure map ------------------------------------------------------
 
-obtn.data.by.measure <- obtn.data.by.measure %>%
-     mutate(tertile = ntile(number, 3))
+# RACE/ETHNICITY ----------------------------------------------------------
+
+race.ethnicity.order <- rev(c("White",
+                              "Latino",
+                              "African American",
+                              "Asian",
+                              "Am Indian/Alaska Native",
+                              "Native Hawaiian/Pacific Islander",
+                              "Multiracial",
+                              "Other Race"))
+
+for (i in 1:length(oregon.counties)) {
+     
+     race.ethnicity <- county.data %>%
+          select(geography, population_pct_white:population_pct_latino) %>%
+          set_names(c("geography",
+                      "White",
+                      "African American",
+                      "Am Indian/Alaska Native",
+                      "Asian",
+                      "Native Hawaiian/Pacific Islander",
+                      "Other Race",
+                      "Multiracial",
+                      "Latino")) %>%
+          gather(key = "racial.ethnic.group", value = "pct", -geography) %>%
+          arrange(geography) %>%
+          mutate(racial.ethnic.group = factor(racial.ethnic.group, levels = race.ethnicity.order)) %>%
+          mutate(pct = round(pct, digits = 3)) %>%
+          filter(geography == oregon.counties[i])
+     
+     race.ethnicity.white <- race.ethnicity %>%
+          filter(racial.ethnic.group == "White")
+     
+     
+     race.ethnicity.all.but.white <- race.ethnicity %>%
+          filter(racial.ethnic.group != "White")
+     
+     ggplot(race.ethnicity, 
+            aes(x = racial.ethnic.group, y = pct)) +
+          geom_bar(stat = "identity", fill = tfff.dark.green) +
+          geom_text(data = race.ethnicity.all.but.white,
+                    label = paste(race.ethnicity.all.but.white$racial.ethnic.group, 
+                                  percent(race.ethnicity.all.but.white$pct), 
+                                  sep =": "),
+                    hjust = 0,
+                    nudge_y = .02,
+                    color = tfff.dark.gray,
+                    family = "Calibri") +
+          geom_text(data = race.ethnicity.white,
+                    label = paste(race.ethnicity.white$racial.ethnic.group, 
+                                  percent(race.ethnicity.white$pct), 
+                                  sep =": "),
+                    hjust = 0,
+                    nudge_y = -1 * (race.ethnicity.white$pct / 3),
+                    color = "white",
+                    family = "Calibri") +
+          scale_x_discrete(expand = c(0, 0)) +
+          scale_y_continuous(expand = c(0, 0)) +
+          tfff.bar.chart.theme +
+          coord_flip()
+     
+     dk_save_plot("race ethnicity", 3.1, 2.1)
+     
+     
+}
+
+
+# Urban/rural/Oregon ------------------------------------------------------
+
+urban.rural.oregon <- c("urban", "rural", "oregon")
+
+for (i in 1:length(urban.rural.oregon)) {
+     
+     race.ethnicity <- county.data %>%
+          select(geography, population_pct_white:population_pct_latino) %>%
+          set_names(c("geography",
+                      "White",
+                      "African American",
+                      "American Indian or Alaska Native",
+                      "Asian",
+                      "Native Hawaiian/Pacific Islander",
+                      "Other Race",
+                      "Multiracial",
+                      "Latino")) %>%
+          gather(key = "racial.ethnic.group", value = "pct", -geography) %>%
+          arrange(geography) %>%
+          mutate(racial.ethnic.group = factor(racial.ethnic.group, levels = race.ethnicity.order)) %>%
+          mutate(pct = round(pct, digits = 3)) %>%
+          filter(geography == urban.rural.oregon[i])
+     
+     race.ethnicity.white <- race.ethnicity %>%
+          filter(racial.ethnic.group == "White")
+     
+     
+     race.ethnicity.all.but.white <- race.ethnicity %>%
+          filter(racial.ethnic.group != "White")
+     
+     ggplot(race.ethnicity, 
+            aes(x = racial.ethnic.group, y = pct)) +
+          geom_bar(stat = "identity", fill = tfff.dark.green) +
+          geom_text(data = race.ethnicity.all.but.white,
+                    label = paste(race.ethnicity.all.but.white$racial.ethnic.group, 
+                                  percent(race.ethnicity.all.but.white$pct), 
+                                  sep =": "),
+                    hjust = 0,
+                    nudge_y = .02,
+                    color = tfff.dark.gray,
+                    family = "Calibri") +
+          geom_text(data = race.ethnicity.white,
+                    label = paste(race.ethnicity.white$racial.ethnic.group, 
+                                  percent(race.ethnicity.white$pct), 
+                                  sep =": "),
+                    hjust = 0,
+                    nudge_y = -1 * (race.ethnicity.white$pct / 3),
+                    color = "white",
+                    family = "Calibri") +
+          scale_x_discrete(expand = c(0, 0)) +
+          scale_y_continuous(expand = c(0, 0),
+                             limits = c(0, .85)) +
+          tfff.bar.chart.theme +
+          coord_flip()
+     
+     dk_save_plot_by_measure_weird_ones("race ethnicity", 4, 2.5)
+     # dk_save_plot("race ethnicity", 3.1, 2.1)
+     
+     
+}
+
+
+
+
+
+# MEDIAN INCOME -----------------------------------------------------------
+
+for (i in 1:length(oregon.counties)) {
+     
+     median.income <- county.data %>%
+          select(geography, median_income) %>%
+          gather(key = "median_income", value = "amount", -geography) %>%
+          arrange(geography) %>%
+          filter(geography == oregon.counties[i] | geography == "oregon") %>%
+          select(-median_income) %>%
+          mutate(geography.factor = factor(geography, 
+                                           levels = c("oregon",
+                                                      county.data$geography[i + 3])))
+     
+     
+     ggplot(median.income, aes(x = geography.factor, y = amount, 
+                               fill = geography.factor)) +
+          geom_bar(stat = "identity",
+                   width = .75) +
+          geom_text(label = dollar(median.income$amount),
+                    # size = tfff.base.font.size,
+                    color = "white",
+                    # fontface = "bold",
+                    family = "Calibri",
+                    nudge_y = -9500) +
+          geom_text(label = str_to_title(median.income$geography.factor),
+                    hjust = .1,
+                    # size = tfff.base.font.size,
+                    color = "white",
+                    # fontface = "bold",
+                    family = "Calibri",
+                    aes(x = median.income$geography.factor, 
+                        y = (median.income$amount[1] * .08))) +
+          tfff.bar.chart.theme +
+          scale_fill_manual(values = c(tfff.medium.gray, tfff.dark.green)) +
+          scale_x_discrete(expand = c(0, 0)) +
+          scale_y_continuous(expand = c(0, 0)) +
+          coord_flip() 
+     
+     dk_save_plot("median income", 2.43, .61)
+     
+     
+}
+
+
+
+# POPULATION PYRAMID ------------------------------------------------------
+
+# Define age order for later on
+
+age.order <- c("0-4",
+               "5-9",
+               "10-14",
+               "15-19",
+               "20-24",
+               "25-29",
+               "30-34",
+               "35-39",
+               "40-44",
+               "45-49",
+               "50-54",
+               "55-59",
+               "60-64",
+               "65-69",
+               "70-74",
+               "75-79",
+               "80-84",
+               "85+")  
+
+
+# Define make population pyramid tibbles function
+
+
+population.pyramid <- county.data %>%
+     select(geography, males_0_4:females_85_plus) %>%
+     gather(key = "gender_age", value = "amount", -geography) %>%
+     mutate(gender_age = str_replace(gender_age, "_80_85", "_80_84")) %>%
+     arrange(geography) %>%
+     mutate(gender = ifelse(str_detect(gender_age, "female"), "women", "men")) %>%
+     mutate(gender_age = str_replace(gender_age, "females_", "")) %>%
+     mutate(gender_age = str_replace(gender_age, "males_", "")) %>%
+     mutate(gender_age = str_replace(gender_age, "_", "-")) %>%
+     mutate(gender_age = str_replace(gender_age, "-plus", "+")) %>%
+     set_names(c("geography", "age", "pct", "gender")) %>%
+     mutate(pct = ifelse(pct < .01, .01, pct)) %>%
+     mutate(age = factor(age, levels = age.order)) %>%
+     mutate(pct = round(pct, digits = 3)) %>%
+     mutate(pct_formatted = ifelse(gender == "women", -pct, pct)) %>%
+     mutate(age_labels = age) %>%
+     mutate(age_labels = str_replace(age_labels, "^0-4", "  0-4  ")) %>%
+     mutate(age_labels = str_replace(age_labels, "^5-9", "  5-9  ")) %>%
+     mutate(age_labels = str_replace(age_labels, "^85\\+", "  85+  "))
+
+
+
+
+for (i in 1:length(oregon.counties)) {
+     
+     
+     population.pyramid.temp <- population.pyramid %>%
+          filter(geography == oregon.counties[i])
+     
+     
+     
+     if (max(population.pyramid.temp$pct) < .04) {
+          population.pyramid.labels <- c("4%", "2%", 
+                                         "0", 
+                                         "2%", "4%")  
+          population.pyramid.limit <- .04
+          population.pyramid.labels.placement <- .01
+          
+          population.pyramid.temp <- population.pyramid.temp %>% 
+               mutate(pct = ifelse(pct == .01, (4/6) * .01, pct)) %>%
+               mutate(pct_formatted = ifelse(gender == "women", -pct, pct))
+          
+     } else if (max(population.pyramid.temp$pct) < .06) {
+          population.pyramid.labels <- c("6%", "4%", "2%", 
+                                         "0", 
+                                         "2%", "4%", "6%")
+          population.pyramid.limit <- .06
+          population.pyramid.labels.placement <- .01
+          
+     } else if (max(population.pyramid.temp$pct) < .08) {
+          population.pyramid.labels <- c("8%", "6%", "4%", "2%", 
+                                         "0", 
+                                         "2%", "4%", "6%", "8%")    
+          population.pyramid.limit <- .08
+          population.pyramid.labels.placement <- .02
+          
+          population.pyramid.temp <- population.pyramid.temp %>% 
+               mutate(pct = ifelse(pct < .019, (8/6) * .01, pct)) %>%
+               mutate(pct_formatted = ifelse(gender == "women", -pct, pct))
+          
+     } else if (max(population.pyramid.temp$pct) < .1) {
+          population.pyramid.labels <- c("10%", "8%", "6%", "4%", "2%", 
+                                         "0", 
+                                         "2%", "4%", "6%", "8%", "10%")  
+          population.pyramid.limit <- .1
+          population.pyramid.labels.placement <- .03
+          
+          population.pyramid.temp <- population.pyramid.temp %>% 
+               mutate(pct = ifelse(pct < .019, (10/6) * .01, pct)) %>%
+               mutate(pct_formatted = ifelse(gender == "women", -pct, pct))
+          
+     }
+     
+     
+     # Plot population pyramid
+     
+     ggplot(population.pyramid.temp, aes(x = age, y = pct_formatted, 
+                                         fill = gender,
+                                         frame = geography)) +
+          geom_hline(yintercept = 0, color = "white") +
+          geom_bar(data = population.pyramid.temp, 
+                   stat = "identity",
+                   width = .7) +
+          geom_label(label = population.pyramid.temp$age_labels, 
+                     aes(x = age, y = 0), 
+                     # hjust = 0,
+                     fill = "white",
+                     family = "Calibri",
+                     label.size = NA, 
+                     # size = tfff.base.font.size,
+                     color = tfff.dark.gray) +
+          geom_label(aes(x = 17, y = population.pyramid.limit - 
+                              population.pyramid.labels.placement),
+                     label = "Men",
+                     color = "white",
+                     family = "Calibri",
+                     fill = tfff.dark.green,
+                     label.size = 0,
+                     label.r = unit(0, "lines"),
+                     label.padding = unit(.3, "lines")) +
+          geom_label(aes(x = 17, y = (population.pyramid.limit -
+                                           population.pyramid.labels.placement) * -1),
+                     label = "Women",
+                     color = "white",
+                     family = "Calibri",
+                     fill = tfff.light.green,
+                     label.size = 0,
+                     label.r = unit(0, "lines"),
+                     label.padding = unit(.3, "lines")) +
+          coord_flip() +
+          scale_y_continuous(breaks = seq(population.pyramid.limit * -1, 
+                                          population.pyramid.limit, 
+                                          by = .02),
+                             limits = c(population.pyramid.limit * -1, 
+                                        population.pyramid.limit),
+                             labels = population.pyramid.labels) +
+          scale_fill_manual(values = c(tfff.dark.green, tfff.light.green)) +
+          tfff.population.pyramid.theme 
+     
+     dk_save_plot_png("population pyramid", 3.27, 4.0752)
+}
+
+
+
+# Population pyramid state/urban/rural ------------------------------------
+
+population.pyramid.state.urban.rural <- population.pyramid %>%
+     filter(geography == "urban" | geography == "rural" | geography == "oregon")
+
+population_pyramid_plot <- function(filter) {
+     
+     dataset <- population.pyramid.state.urban.rural %>%
+          filter(geography == filter)
+     
+     ggplot(dataset, aes(x = age, y = pct_formatted, 
+                         fill = gender,
+                         frame = geography)) +
+          geom_bar(data = dataset, 
+                   stat = "identity",
+                   width = .7) +
+          geom_label(label = dataset$age_labels, 
+                     aes(x = age, y = 0), 
+                     # hjust = 0,
+                     fill = "white",
+                     family = "Calibri",
+                     label.size = NA, 
+                     # size = tfff.base.font.size,
+                     color = tfff.dark.gray) +
+          geom_label(aes(x = 17, y = .04),
+                     label = "Men",
+                     color = "white",
+                     family = "Calibri",
+                     fill = tfff.dark.green,
+                     label.size = 0,
+                     label.r = unit(0, "lines"),
+                     label.padding = unit(.3, "lines")) +
+          geom_label(aes(x = 17, y = -.04),
+                     label = "Women",
+                     color = "white",
+                     family = "Calibri",
+                     fill = tfff.light.green,
+                     label.size = 0,
+                     label.r = unit(0, "lines"),
+                     label.padding = unit(.3, "lines")) +
+          coord_flip() +
+          scale_y_continuous(breaks = seq(-.05,
+                                          .05,
+                                          by = .01),
+                             limits = c(-.05,
+                                        .05),
+                             labels = c("5%", "4%", "3%", "2%", "1%", 
+                                        "0", 
+                                        "1%", "2%", "3%", "4%", "5%")) +
+          # expand = c(0, 0.001)) +
+          scale_x_discrete(expand = c(0, 0)) +
+          scale_fill_manual(values = c(tfff.dark.green, tfff.light.green)) +
+          tfff.population.pyramid.theme
+     
+     ggsave(filename = paste("plots/final/by measure/population pyramid/",
+                             filter,
+                             ".png", 
+                             sep=""),
+            dpi = 300,
+            width = 3.27,
+            height = 4.0752,
+            units = "in")
+     
+}
+
+
+save_pop_pyramid <- function(name) {
+     ggsave(filename = paste("plots/final/by measure/population pyramid/",
+                             name,
+                             ".png", 
+                             sep=""),
+            dpi = 300,
+            width = 3,
+            height = 4,
+            units = "in")
+}
+
+
+population_pyramid_plot("oregon")
+save_pop_pyramid("oregon")
+
+population_pyramid_plot("rural")
+save_pop_pyramid("rural")
+
+population_pyramid_plot("urban")
+save_pop_pyramid("urban")
+
+
+# SINGLE MEASURE CHOROPLETH MAPS ------------------------------------------
+
+single.measures.list <- excel_sheets("data/OBTN final data by measure.xlsx")
+
+
+## Get first sheet
+single.measures.data <- read_excel(path = "data/OBTN final data by measure.xlsx",
+                                   sheet = single.measures.list[2]) %>%
+     select(-3) %>%
+     set_names(c(single.measures.list[2],
+                 "geography")) %>%
+     mutate(geography = str_replace(geography, " County, Oregon", "")) %>%
+     mutate(geography = str_replace(geography, "Rural Oregon", "Rural")) %>%
+     mutate(geography = str_replace(geography, "Urban Oregon", "Urban")) %>%
+     mutate(geography = str_to_lower(geography))
+
+
+## Get later sheets and add them to first one
+
+for (i in 3:length(single.measures.list)) {
+     single.measures.data.temp <- read_excel(path = "data/OBTN final data by measure.xlsx",
+                                             sheet = i) %>%
+          select(-3) %>%
+          set_names(c(single.measures.list[i],
+                      "geography")) %>%
+          mutate(geography = str_replace(geography, " County, Oregon", "")) %>%
+          mutate(geography = str_replace(geography, "Rural Oregon", "Rural")) %>%
+          mutate(geography = str_replace(geography, "Urban Oregon", "Urban")) %>%
+          mutate(geography = str_to_lower(geography))
+     
+     single.measures.data <<- left_join(single.measures.data,
+                                        single.measures.data.temp,
+                                        by = "geography")
+}
+
+## Add in mobile home data (not sure why it's not getting imported, but whatevs)
+mobile.home.data <- read_excel(path = "data/OBTN final data by measure.xlsx", 
+                               sheet = "Mobile Homes") %>%
+     select(one_of("Rank", "County")) %>%
+     set_names(c("Mobile Homes", 
+                 "geography")) %>%
+     mutate(geography = str_replace(geography, " County, Oregon", "")) %>%
+     mutate(geography = str_replace(geography, "Rural Oregon", "Rural")) %>%
+     mutate(geography = str_replace(geography, "Urban Oregon", "Urban")) %>%
+     mutate(geography = str_to_lower(geography))
+
+single.measures.data <<- left_join(single.measures.data, 
+                                   mobile.home.data, 
+                                   by = "geography")
+
+
+## Add in higher ed enrollment data
+# higher.ed.enrollment.data <- read_excel(path = "data/OBTN final data by measure.xlsx", 
+#                                         sheet = "Higher ed enrollment") %>%
+#      select(one_of("Rank", "County")) %>%
+#      set_names(c("Higher ed enrollment", 
+#                  "geography")) %>%
+#      mutate(geography = str_replace(geography, " County, Oregon", "")) %>%
+#      mutate(geography = str_replace(geography, "Rural Oregon", "Rural")) %>%
+#      mutate(geography = str_replace(geography, "Urban Oregon", "Urban")) %>%
+#      mutate(geography = str_to_lower(geography))
+# 
+# single.measures.data <<- left_join(single.measures.data, 
+#                                    higher.ed.enrollment.data, 
+#                                    by = "geography")
+
+## Add higher ed enrollment to measures list
+
+# single.measures.list <- c(single.measures.list, "Higher ed enrollment")
+
+
+# Reorder, putting county first
+
+single.measures.data <- single.measures.data[, c(2, 1, 3:length(single.measures.data))] %>%
+     filter(geography != "oregon")
+
+# Create tertiles and make data tidy 
+
+single.measures.data <- single.measures.data %>%
+     gather(key = measure, value = rank, -geography) %>%
+     group_by(measure) %>%
+     mutate(tertile = ntile(rank, 3)) %>%
+     arrange(measure, tertile) %>%
+     ungroup() %>% 
+     mutate(tertile = as.character(tertile)) %>%
+     mutate(tertile = str_replace(tertile, "1", "Top third")) %>%
+     mutate(tertile = str_replace(tertile, "2", "Middle third")) %>%
+     mutate(tertile = str_replace(tertile, "3", "Bottom third")) %>%
+     mutate(tertile = str_replace_na(tertile)) %>%
+     mutate(tertile = str_replace(tertile, "NA", "ID")) %>%
+     mutate(tertile = factor(tertile, levels = c("Top third", 
+                                                 "Middle third",
+                                                 "Bottom third",
+                                                 "ID")))
+
 
 oregon.map.single.measure <- map_data("county") %>%
      filter(region == "oregon") %>%
-     left_join(obtn.data.by.measure, by = c("subregion" = "county"))
+     left_join(single.measures.data, by = c("subregion" = "geography"))
 
 
+for (i in 2:32) {
+     oregon.map.single.measure.temp <- oregon.map.single.measure %>%
+          filter(measure == single.measures.list[i])
+     
+     
+     ggplot(data = oregon.map.single.measure.temp, aes(x = long, y = lat, 
+                                                       group = group,
+                                                       fill = factor(tertile))) +
+          # labs(title = single.measures.list[2]) +
+          geom_polygon(color = "#ffffff") +
+          scale_fill_manual(values = rev(c("#dddddd", 
+                                           "#B5CC8E", 
+                                           "#6E8F68", 
+                                           "#265142"))) +
+          coord_map() +
+          scale_x_continuous(expand = c(0, 0)) +
+          scale_y_continuous(expand = c(0, 0)) +
+          tfff.map.theme +
+          theme(legend.position = "bottom")
+     
+     ggsave(filename = paste("plots/final/by measure/maps/pdf/", 
+                             single.measures.list[i],
+                             ".pdf", 
+                             sep=""),
+            device = cairo_pdf,
+            width = 4.3684,
+            height = 3.25,
+            units = "in",
+            dpi = 300)
+     
+}
 
 
+# Make higher ed enrollment one different, changing no data to no college
 
-ggplot(data = oregon.map.single.measure, aes(x = long, y = lat, 
-                                             group = group,
-                                             fill = factor(tertile))) +
+oregon.map.single.measure.higher.ed <- oregon.map.single.measure %>%
+     filter(measure == "Higher ed enrollment") %>%
+     mutate(tertile = str_replace(tertile, "ID", "No college")) %>%
+     mutate(tertile = factor(tertile, levels = c("Top third", 
+                                                 "Middle third",
+                                                 "Bottom third",
+                                                 "No college")))
+
+ggplot(data = oregon.map.single.measure.higher.ed, aes(x = long, y = lat, 
+                                                       group = group,
+                                                       fill = factor(tertile))) +
      geom_polygon(color = "#ffffff") +
-     scale_fill_manual(values = rev(c("#B5CC8E", "#6E8F68", "#265142"))) +
+     scale_fill_manual(values = rev(c("#dddddd", 
+                                      "#B5CC8E", 
+                                      "#6E8F68", 
+                                      "#265142"))) +
      coord_map() +
+     scale_x_continuous(expand = c(0, 0)) +
+     scale_y_continuous(expand = c(0, 0)) +
      tfff.map.theme +
      theme(legend.position = "bottom")
 
-ggsave("low birthweight.png")
+ggsave(filename = paste("plots/final/by measure/maps/pdf/Higher ed enrollment",
+                        ".pdf", 
+                        sep=""),
+       device = cairo_pdf,
+       width = 4.3684,
+       height = 3.25,
+       units = "in",
+       dpi = 300)
+
+
+
+# Single measures for InDesign --------------------------------------------
+
+
+
+## Get first sheet
+single.measures.data.ind <- read_excel(path = "data/OBTN final data by measure.xlsx", 
+                                       sheet = single.measures.list[2]) %>%
+     # select(-3) %>%
+     set_names(c(single.measures.list[2], 
+                 "geography", 
+                 "amount")) %>%
+     mutate(geography = str_replace(geography, " County, Oregon", "")) %>%
+     mutate(geography = str_replace(geography, "Rural Oregon", "Rural")) %>%
+     mutate(geography = str_replace(geography, "Urban Oregon", "Urban")) %>%
+     mutate(geography = str_to_lower(geography))
+
+
+## Get later sheets and add them to first one
+
+for (i in 3:length(single.measures.list)) {
+     single.measures.data.temp <- read_excel(path = "data/OBTN final data by measure.xlsx", 
+                                             sheet = i) %>%
+          select(1:3) %>%
+          set_names(c(single.measures.list[i], 
+                      "geography",
+                      "amount")) %>%
+          mutate(geography = str_replace(geography, " County, Oregon", "")) %>%
+          mutate(geography = str_replace(geography, "Rural Oregon", "Rural")) %>%
+          mutate(geography = str_replace(geography, "Urban Oregon", "Urban")) %>%
+          mutate(geography = str_to_lower(geography))
+     
+     View(single.measures.data.ind) <- left_join(single.measures.data.ind, 
+                                                 single.measures.data.temp, 
+                                                 by = "geography")
+}
+
+## Add in mobile home data (not sure why it's not getting imported, but whatevs)
+# mobile.home.data.ind <- read_excel(path = "data/OBTN final data by measure.xlsx", 
+#                                sheet = 30) %>%
+#      select(one_of("Rank", "County", "Mobile Homes")) %>%
+#      set_names(c(single.measures.list[30], 
+#                  "geography",
+#                  "amount")) %>%
+#      mutate(geography = str_replace(geography, " County, Oregon", "")) %>%
+#      mutate(geography = str_replace(geography, "Rural Oregon", "Rural")) %>%
+#      mutate(geography = str_replace(geography, "Urban Oregon", "Urban")) %>%
+#      mutate(geography = str_to_lower(geography))
+# 
+# single.measures.data.ind <- left_join(single.measures.data.ind, 
+#                                    mobile.home.data.ind, 
+#                                    by = "geography")
+
+# single.measures.data.ind <- single.measures.data.ind %>%
+#      select(starts_with("amount"))
+
+write.csv(single.measures.data.ind, "temp.csv")
+
+# EMPLOYMENT CATEGORIES ---------------------------------------------------
+
+employment.categories <- county.data %>%
+     select(contains("employment")) %>%
+     gather() %>%
+     filter(!is.na(value)) %>%
+     distinct(value)
+
+top.industries <- county.data %>%
+     select(c(geography, employment_1:employment_3)) %>%
+     filter(geography != "rural" & geography != "urban" & geography != "oregon") %>%
+     gather(key = "key", value = "value", -geography) %>%
+     select(-key) %>%
+     # arrange(geography) %>%
+     set_names(c("county", "industry")) %>%
+     arrange(industry) 
+
+
+oregon.map.industries <- map_data("county") %>%
+     filter(region == "oregon") %>%
+     left_join(top.industries, by = c("subregion" = "county"))
+
+for (i in 1:length(employment.categories$value)) {
+     oregon.map.industries.temp <- oregon.map.industries %>%
+          filter(industry == employment.categories$value[i])
+     
+     ggplot() +
+          geom_polygon(data = oregon.map, aes(x = long, y = lat, 
+                                              group = group),
+                       fill = tfff.light.gray,
+                       color = "white") +
+          geom_polygon(data = oregon.map.industries.temp, aes(x = long, y = lat, 
+                                                              group = group),
+                       fill = tfff.dark.green,
+                       color = "white") +
+          scale_x_continuous(expand = c(0, 0)) +
+          scale_y_continuous(expand = c(0, 0)) +
+          coord_map() +
+          tfff.map.theme 
+     
+     ggsave(filename = paste("plots/final/by measure/industries/", 
+                             employment.categories$value[i],
+                             ".pdf", 
+                             sep=""),
+            device = cairo_pdf,
+            width = 2,
+            height = 2*.75,
+            unit = "in",
+            dpi = 300)
+}
+
+
+# employment.categories.sheet <- gs_title("OBTN employment categories and icons")
+# 
+# gs_edit_cells(employment.categories.sheet, 
+#               ws = 1,
+#               input = employment.categories, 
+#               anchor = "A1", 
+#               trim = TRUE, 
+#               col_names = TRUE,
+#               verbose = TRUE)
+
+
+# Tribes ------------------------------------------------------------------
+
+tribes <- read_excel(path = "data/OBTN final data by county.xlsx", 
+                     sheet = "Tribes") %>%
+     gather(key = "tribe", value = "present", -COUNTY) %>%
+     filter(!is.na(present)) %>%
+     select(-present) %>%
+     set_names(c("county", "tribe")) %>%
+     mutate(county = str_to_lower(county))
+
+oregon.map.tribes <- map_data("county") %>%
+     filter(region == "oregon") %>%
+     left_join(tribes, by = c("subregion" = "county"))
+
+tribes.list <- read_excel(path = "data/OBTN final data by county.xlsx", 
+                          sheet = "Tribes") %>%
+     select(-COUNTY) 
+
+tribes.list <- colnames(tribes.list)
+
+for (i in 1:length(tribes.list)) {
+     temp <- oregon.map.tribes %>%
+          filter(tribe == tribes.list[i])
+     
+     ggplot() +
+          geom_polygon(data = oregon.map, aes(x = long, 
+                                              y = lat, 
+                                              group = group),
+                       fill = tfff.light.gray,
+                       color = "white") +
+          geom_polygon(data = temp, aes(x = long, 
+                                        y = lat, 
+                                        group = group),
+                       fill = tfff.dark.green,
+                       color = "white") +
+          scale_x_continuous(expand = c(0, 0)) +
+          scale_y_continuous(expand = c(0, 0)) +
+          coord_map() +
+          tfff.map.theme 
+     
+     ggsave(filename = paste("plots/final/by measure/tribes/", 
+                             tribes.list[i],
+                             ".pdf", 
+                             sep=""),
+            device = cairo_pdf,
+            width = 2,
+            height = 2*.75,
+            unit = "in",
+            dpi = 300)
+}
+
+
+# STATEWIDE MAPS ----------------------------------------------------------
+
+## Notable features
+
+oregon.map.by.county.all <- map_data("county") %>%
+     filter(region == "oregon")
+
+notable.features.statewide <- notable.features %>%
+     filter(!is.na(feature)) %>%
+     arrange(feature) %>%
+     distinct(feature, .keep_all = TRUE) %>%
+     mutate(label_number = row_number())
+
+
+ggplot() +
+     geom_polygon(data = oregon.map.by.county.all, 
+                  aes(x = long, 
+                      y = lat, 
+                      group = group),
+                  fill = tfff.light.green,
+                  color = "white",
+                  size = 1) +
+     geom_label_repel(data = notable.features.statewide,
+                      label = notable.features.statewide$label_number, 
+                      aes(x = notable.features.statewide$lon,
+                          y = notable.features.statewide$lat),
+                      color = "white",
+                      fill = tfff.dark.green,
+                      family = "Calibri",
+                      segment.color = tfff.dark.green) +
+     coord_map() +
+     tfff.map.theme
+
+ggsave("misc/notable features.png")
+# write.csv(notable.features.statewide, "misc/notable features.csv")  
+write.csv(notable.features, "misc/notable features.csv")  
+
+# Largest community in county ####
+
+largest.community.by.county <- county.data %>%
+     filter(!is.na(largest_community)) %>%
+     filter(geography != "oregon") %>%
+     arrange(largest_community) %>%
+     select(geography:largest_community_pop) %>%
+     mutate(geography = str_to_title(geography)) %>%
+     mutate(text_to_use = paste(largest_community, 
+                                " (",
+                                geography,
+                                "): ",
+                                largest_community_pop,
+                                sep="")) %>%
+     arrange(-largest_community_pop) %>%
+     mutate(join_text = paste(largest_community,
+                              ", ",
+                              geography,
+                              sep = "")) %>%
+     mutate(label_number = rev(row_number(largest_community_pop))) %>%
+     mutate(label_number = ifelse(geography == "Wallowa", 32, label_number)) %>%
+     mutate(label_number = ifelse(geography == "Grant", 33, label_number)) %>%
+     mutate(label_number = ifelse(geography == "Gilliam", 34, label_number)) %>%
+     mutate(label_number = ifelse(geography == "Sherman", 36, label_number)) 
+
+
+
+
+
+largest.communities <- largest.communities %>%
+     mutate(join_text = paste(name,
+                              ", ",
+                              str_to_title(county),
+                              sep = ""))
+
+largest.community.by.county <- left_join(largest.community.by.county,
+                                         largest.communities,
+                                         by = "join_text")
+
+write.csv(largest.community.by.county, "misc/largest communities.csv")    
+
+largest.community.by.county.pdx.salem <- largest.community.by.county %>%
+     filter(largest_community == "Portland" | largest_community == "Salem")
+
+largest.community.by.county <- largest.community.by.county %>%
+     filter(largest_community != "Portland" & largest_community != "Salem")
+
+
+
+ggplot() +
+     geom_polygon(data = oregon.map.by.county.all, 
+                  aes(x = long, 
+                      y = lat, 
+                      group = group),
+                  fill = tfff.light.green,
+                  color = "white",
+                  size = 1) +
+     geom_text(data = largest.community.by.county,
+               label = largest.community.by.county$label_number, 
+               aes(x = largest.community.by.county$lon,
+                   y = largest.community.by.county$lat),
+               color = tfff.dark.green,
+               family = "Calibri",
+               fontface = "bold") +
+     geom_text_repel(data = largest.community.by.county.pdx.salem,
+                     label = largest.community.by.county.pdx.salem$label_number, 
+                     aes(x = largest.community.by.county.pdx.salem$lon,
+                         y = largest.community.by.county.pdx.salem$lat),
+                     color = tfff.dark.green,
+                     family = "Calibri",
+                     fontface = "bold",
+                     segment.color = "transparent",
+                     box.padding = .001) +
+     coord_map() +
+     tfff.map.theme
+
+
+ggsave("misc/largest communities.pdf",
+       device = cairo_pdf,
+       height = 4,
+       width = 5, 
+       units = "in")
+
+
+# County map --------------------------------------------------------------
+
+oregon.map.by.county.all <- map_data("county") %>%
+     filter(region == "oregon") %>%
+     mutate(subregion = case_when(
+          subregion == "hood river" ~ "hood\nriver",
+          TRUE ~ subregion
+     ))
+
+county.names.lon <- oregon.map.by.county.all %>%
+     group_by(subregion) %>%
+     summarize(avg = mean(range(long)))
+
+county.names.lat <- oregon.map.by.county.all %>%
+     group_by(subregion) %>%
+     summarize(avg = mean(range(lat)))
+
+county.names <- left_join(county.names.lat, county.names.lon, by = "subregion") %>%
+     set_names(c('county', 'lat', 'lon')) %>%
+     mutate(county = str_to_title(county)) %>%
+     mutate(lat = case_when (
+          county == 'Washington' ~ lat + .08,
+          county == 'Wasco' ~ lat - .1,
+          county == 'Umatilla' ~ lat + .1,
+          county == 'Union' ~ lat - .1,
+          county == 'Gilliam' ~ lat - .15,
+          county == 'Lake' ~ lat + .2,
+          county == 'Multnomah' ~ lat - .035,
+          county == 'Sherman' ~ lat + .145,
+          county == 'Hood\nRiver' ~ lat + .08,
+          TRUE ~ lat)
+     ) %>%
+     mutate(lon = case_when (
+          county == 'Deschutes' ~ lon - .45,
+          county == 'Klamath' ~ lon - .2,
+          county == 'Gilliam' ~ lon - .05,
+          county == 'Polk' ~ lon - .05,
+          county == 'Lake' ~ lon - .2,
+          county == 'Curry' ~ lon - .1,
+          county == 'Wasco' ~ lon - .15,
+          county == 'Marion' ~ lon - .35,
+          county == 'Tillamook' ~ lon - .15,
+          county == 'Jefferson' ~ lon - .15,
+          county == 'Wheeler' ~ lon + .05,
+          county == 'Josephine' ~ lon + .1,
+          county == 'Benton' ~ lon + .02,
+          county == 'Yamhill' ~ lon + .06,
+          county == 'Lane' ~ lon + .15,
+          county == 'Hood\nRiver' ~ lon + .025,
+          TRUE ~ lon)
+     )
+
+
+
+ggplot() +
+     geom_polygon(data = oregon.map.by.county.all, 
+                  aes(x = long, 
+                      y = lat, 
+                      group = group),
+                  fill = tfff.light.green,
+                  color = "white") +
+     geom_text(data = county.names,
+               aes(x = lon, 
+                   y = lat, 
+                   label = county), 
+               size=2.9,
+               lineheight = .75,
+               family = "Calibri",
+               # fontface = 'bold',
+               color = tfff.dark.green) +
+     coord_map() +
+     scale_x_continuous(expand = c(0, 0)) +
+     scale_y_continuous(expand = c(0, 0)) +
+     tfff.map.theme 
+
+ggsave("misc/all counties.pdf",
+       device = cairo_pdf,
+       width = 6.75, 
+       units = "in")
+
+ggsave("misc/all counties.svg",
+       width = 6.75, 
+       units = "in")
 
 
